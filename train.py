@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
-from torch.utils.data import DataLoader
+from torch.utils.data import DataLoader, random_split
 from torch.optim import lr_scheduler
 
 import dataloader as dset
@@ -91,36 +91,38 @@ class DeepWriter_Train:
         self.modelfile = basedir
         self.batch_size = 16
         
-        train_set = dset.DatasetFromFolder(dataset=self.dataset,
+        Data_set = dset.DatasetFromFolder(dataset=self.dataset,
         				labelfolder = self.labelfolder,
                         foldername=self.train_folder,
                         imgtype=self.imgtype,
                         scale_size=self.scale_size,
                         is_training = True)
         
-        self.training_data_loader = DataLoader(dataset=train_set, num_workers=0, 
-                           batch_size=self.batch_size, shuffle=True)
+        train_data, test_data = random_split(Data_set, [16396, 4099])
         
-        test_set = dset.DatasetFromFolder(dataset=self.dataset,
-        				labelfolder = self.labelfolder,
-                        foldername=self.test_folder,imgtype=self.imgtype,
-                        scale_size=self.scale_size,
-                        is_training = False)
+        #test_set = dset.DatasetFromFolder(dataset=self.dataset,
+        				#labelfolder = self.labelfolder,
+                        #foldername=self.test_folder,imgtype=self.imgtype,
+                        #scale_size=self.scale_size,
+                        #is_training = False)
         
-        self.testing_data_loader = DataLoader(dataset=test_set, num_workers=0, 
+        #self.testing_data_loader = DataLoader(dataset=test_set, num_workers=0,
+                           #batch_size=self.batch_size, shuffle=False)
+        self.training_data_loader=DataLoader(dataset=train_data, num_workers=0,
                            batch_size=self.batch_size, shuffle=False)
-        
-        num_class = train_set.num_writer
+        self.testing_data_loader = DataLoader(dataset=test_data, num_workers=0,
+                                               batch_size=self.batch_size, shuffle=False)
+        num_class = Data_set.num_writer
         #self.model = dfrag(1,num_classes=train_set.num_writer).to(self.device) Use this for PatchNet
         #self.model = VGGnet_spatial(1,train_set.num_writer).to(self.device) Use this for SA-Net
-        self.model = MSF(1,train_set.num_writer).to(self.device)
+        self.model = MSF(1,num_class).to(self.device)
         pytorch_total_params = sum(p.numel() for p in self.model.parameters())
         print('Number of parameters is ',pytorch_total_params)
         self.criterion = nn.CrossEntropyLoss()
         self.criterion = LabelSomCE()
         self.optimizer = optim.Adam(self.model.parameters(),lr=0.0001,weight_decay=1e-4) 
         self.scheduler = lr_scheduler.StepLR(self.optimizer,step_size=10,gamma=0.5)
-        self.page = np.zeros((train_set.num_writer,train_set.num_writer))
+        self.page = np.zeros((num_class,num_class))
         #print('CALCULATING FLOPS')
         #inp  = torch.randn(1, 1, 64,128)
         #print(count_ops(self.model, inp))
