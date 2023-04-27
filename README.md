@@ -38,9 +38,9 @@ Data preparation: split each image(by paragraph) into images that only contains 
 Improvement of feature extraction techniques or machine learning algorithms to improve the model’s performance.
 Deploying the model once achieves satisfactory results.
 
-[](https://gitlab.cecs.anu.edu.au/u7434576/japanese-handwriting-analysis/-/blob/main/spatial-net.jpeg)
-[](https://gitlab.cecs.anu.edu.au/u7434576/japanese-handwriting-analysis/-/blob/main/Patch_D.png)
-[](https://gitlab.cecs.anu.edu.au/u7434576/japanese-handwriting-analysis/-/blob/main/MSRF_CLASSIFICATION.jpeg)
+![spatial net](https://gitlab.cecs.anu.edu.au/u7434576/japanese-handwriting-analysis/-/blob/main/spatial-net.jpeg)
+![Patch_D](https://gitlab.cecs.anu.edu.au/u7434576/japanese-handwriting-analysis/-/blob/main/Patch_D.png)
+![MSRF_CLASSIFICATION](https://gitlab.cecs.anu.edu.au/u7434576/japanese-handwriting-analysis/-/blob/main/MSRF_CLASSIFICATION.jpeg)
 
 ### 2. Workspace and Communication channels:
 
