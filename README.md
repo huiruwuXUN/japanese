@@ -30,11 +30,11 @@ can be used to capture unique characteristics of the handwriting style of each w
 Alternatively we can simply use pretrained CNN to generate feature maps(which is probably better for objects instead of characters)
 - [ ] d) pretrained CNN
 
-![spatial net](model/spatial-net.jpeg width="60%" height="50%")*spatial*
+![spatial net](model/spatial-net.jpeg)*spatial*
 
-![Patch_D](model/Patch_D.png width="60%" height="50%")*Patch_D*
+![Patch_D](model/Patch_D.png)*Patch_D*
 
-![MSRF_CLASSIFICATION](model/MSRF_CLASSIFICATION.jpeg "MSRF" width="60%" height="50%")*MSRF*
+![MSRF_CLASSIFICATION](model/MSRF_CLASSIFICATION.jpeg = 250x250)*MSRF*
 
 3. Clustering algorithms
 
@@ -51,8 +51,6 @@ Improvement of feature extraction techniques or machine learning algorithms to i
 Deploying the model once achieves satisfactory results.~~
 
 4. Evaluation
-
-
 
 
 
