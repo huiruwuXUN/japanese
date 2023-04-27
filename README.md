@@ -40,7 +40,7 @@ Deploying the model once achieves satisfactory results.
 
 ![spatial net](spatial-net.jpeg)*spatial*
 
-![Patch_D](Patch_D.png "Patch_D)*Patch_D*
+![Patch_D](Patch_D.png)*Patch_D*
 
 ![MSRF_CLASSIFICATION](MSRF_CLASSIFICATION.jpeg "MSRF")*MSRF*
 
