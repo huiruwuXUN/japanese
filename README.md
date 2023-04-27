@@ -38,11 +38,11 @@ Data preparation: split each image(by paragraph) into images that only contains 
 Improvement of feature extraction techniques or machine learning algorithms to improve the model’s performance.
 Deploying the model once achieves satisfactory results.
 
-![spatial net](spatial-net.jpeg)
+![spatial net](spatial-net.jpeg "spatial net")
 
-![Patch_D](Patch_D.png)
+![Patch_D](Patch_D.png "Patch_D)
 
-![MSRF_CLASSIFICATION](MSRF_CLASSIFICATION.jpeg)
+![MSRF_CLASSIFICATION](MSRF_CLASSIFICATION.jpeg "MSRF")
 
 ### 2. Workspace and Communication channels:
 
