@@ -46,7 +46,11 @@ def main():
     dir_path='leaflets'
     file_names = os.listdir(dir_path)
     num_layer = 40
-    out_path="D:\pythonProject4\8715_project\output\\"
+    if not os.path.exists('output'):
+
+        os.makedirs('output',mode=0o777)
+    out_path = "./output\\"
+
     for file in file_names:
         #print(os.path.join(dir_path, file))
         image_path = os.path.join(dir_path, file)
