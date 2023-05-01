@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a05c952-4ab5-4dd1-81e0-36e9064a2f38" name="Changes" comment="got rid of the CERUG data, added rename.py to rename all jfif files to png." />
+    <list default="true" id="6a05c952-4ab5-4dd1-81e0-36e9064a2f38" name="Changes" comment="recovered Boards.md, Labels.md and Milestones.pdf" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,7 +60,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682929959714</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="recovered Boards.md, Labels.md and Milestones.pdf">
+      <created>1682930492933</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1682930492933</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -78,6 +85,7 @@
     <MESSAGE value="upload leaflets 1-50" />
     <MESSAGE value="Adding GMM method, and K-means method for clustering. Using Xiang da Li's work." />
     <MESSAGE value="got rid of the CERUG data, added rename.py to rename all jfif files to png." />
-    <option name="LAST_COMMIT_MESSAGE" value="got rid of the CERUG data, added rename.py to rename all jfif files to png." />
+    <MESSAGE value="recovered Boards.md, Labels.md and Milestones.pdf" />
+    <option name="LAST_COMMIT_MESSAGE" value="recovered Boards.md, Labels.md and Milestones.pdf" />
   </component>
 </project>
