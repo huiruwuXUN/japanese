@@ -15,26 +15,27 @@ The files are given in a mix of file extensions (pdf, JFIF, JPEG, jpg). The chal
 for the image processing bit, our main goal is to have the image to be read 
 - [X] a) in greyscale, 
 - [X] b) perform noise reduction, 
-- [X] c) perform normalization so that pixel values are in range of 0-1 or 0-255,
+~~- [X] c) perform normalization so that pixel values are in range of 0-1 or 0-255,~~
+- [X] c) Perform image binarization
 - [X] d) skew correction(i.e. correct orientation)
-- [ ] e) crop certain area of hand writings to preserve original writing stykle instead of standardize whole image size
+- [X] e) crop certain area of hand writings to preserve original writing style instead of standardize whole image size(without distorting the handwritings)
 
 2. Feature extraction
  
-An very important part of the project which also involves feature engineering or data augmentation.
+An important part of the project which also involves feature engineering or data augmentation.
 - [ ] a) Histogram of Oriented Gradients(HOG), 
 - [ ] b) Scale-Invariant Feature Transform(SIFT) and 
 - [ ] c) Local Binary Patterns(LBP) 
 can be used to capture unique characteristics of the handwriting style of each writer.
 
 Alternatively we can simply use pretrained CNN to generate feature maps(which is probably better for objects instead of characters)
-- [ ] d) pretrained CNN
+- [X] d) pretrained ResNet
 
-![spatial net|320x271, 50%](model/spatial-net.jpeg)*spatial*
+<!-- ![spatial net|320x271, 50%](model/spatial-net.jpeg)*spatial*
 
 ![Patch_D](model/Patch_D.png)*Patch_D*
 
-![MSRF_CLASSIFICATION](model/MSRF_CLASSIFICATION.jpeg)*MSRF*
+![MSRF_CLASSIFICATION](model/MSRF_CLASSIFICATION.jpeg)*MSRF* -->
 
 3. Clustering algorithms
 
@@ -51,11 +52,11 @@ Alternatively we can simply use pretrained CNN to generate feature maps(which is
 ~~Deploying the model once achieves satisfactory results.~~
 
 4. Evaluation
+Evaluate the algorithm performance with grouped samples provided by Dr.Sophie
+Evaluate the algorithm performance with pilot dataset providing by Dr.Sophie and Professor Yaksou
 
 
-
-
-
+The following paragraph is being maintained by group monitors
 ### 2. Workspace and Communication channels:
 
 OLD landing page: https://docs.google.com/document/d/1IfB7Yy_RHFtP7vITMqCr6VszqwX8z4nqkPvJ8s6wOA0/edit

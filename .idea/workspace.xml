@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a05c952-4ab5-4dd1-81e0-36e9064a2f38" name="Changes" comment="Adding GMM method, and K-means method for clustering. Using Xiang da Li's work.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clustering/.ipynb_checkpoints/GMM-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/clustering/.ipynb_checkpoints/GMM-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clustering/GMM.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/clustering/GMM.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clustering/k-means/A2_programming.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clustering/k-means/cluster.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clustering/k-means/data_clustering.npy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clustering/k-means/data_regression.npy" beforeDir="false" />
-    </list>
+    <list default="true" id="6a05c952-4ab5-4dd1-81e0-36e9064a2f38" name="Changes" comment="recovered Boards.md, Labels.md and Milestones.pdf" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,7 +53,21 @@
       <option name="project" value="LOCAL" />
       <updated>1682038760588</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="got rid of the CERUG data, added rename.py to rename all jfif files to png.">
+      <created>1682929959714</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1682929959714</updated>
+    </task>
+    <task id="LOCAL-00004" summary="recovered Boards.md, Labels.md and Milestones.pdf">
+      <created>1682930492933</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1682930492933</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -78,6 +84,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="upload leaflets 1-50" />
     <MESSAGE value="Adding GMM method, and K-means method for clustering. Using Xiang da Li's work." />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding GMM method, and K-means method for clustering. Using Xiang da Li's work." />
+    <MESSAGE value="got rid of the CERUG data, added rename.py to rename all jfif files to png." />
+    <MESSAGE value="recovered Boards.md, Labels.md and Milestones.pdf" />
+    <option name="LAST_COMMIT_MESSAGE" value="recovered Boards.md, Labels.md and Milestones.pdf" />
   </component>
 </project>

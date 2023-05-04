@@ -43,10 +43,14 @@ def get_feacture_map():
 
 def main():
     conv_layers=get_feacture_map()
-    dir_path='Image processing'
+    dir_path='leaflets'
     file_names = os.listdir(dir_path)
     num_layer = 40
-    out_path="D:\pythonProject4\8715_project\output\\"
+    if not os.path.exists('output'):
+
+        os.makedirs('output',mode=0o777)
+    out_path = "./output\\"
+
     for file in file_names:
         #print(os.path.join(dir_path, file))
         image_path = os.path.join(dir_path, file)
@@ -57,7 +61,7 @@ def main():
             results.append(conv_layers[i](results[-1]))
 
         outputs = results[num_layer]
-        plt.figure(figsize=(6, 6))
+        plt.figure(figsize=(5, 5))
         layer_viz = outputs[0, :, :, :]
         layer_viz = layer_viz.data
         filter=layer_viz[38]
@@ -69,7 +73,7 @@ def main():
         name = out_path +file + ".png"
         plt.savefig(name)
 
-    plt.close()
+        plt.close()
 
 
 if __name__ == '__main__':
