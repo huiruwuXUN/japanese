@@ -6,7 +6,7 @@
 
 ### 1. MileStones and Current Objective:
 
-![milestones](milestone.pdf)*milestone*
+![milestones](Milestones.pdf)*milestone*
 
 #### TODO: 
 
