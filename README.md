@@ -6,6 +6,8 @@
 
 ### 1. MileStones and Current Objective:
 
+![milestones](milestone.png)*milestone*
+
 #### TODO: 
 
 1. Data preparations of the 300 digital version of historical artifacts
@@ -14,8 +16,8 @@ The files are given in a mix of file extensions (pdf, JFIF, JPEG, jpg). The chal
 
 for the image processing bit, our main goal is to have the image to be read 
 - [X] a) in greyscale, 
-- [X] b) perform noise reduction, 
-~~- [X] c) perform normalization so that pixel values are in range of 0-1 or 0-255,~~
+- [X] b) perform noise reduction,
+- [X] ~~c) perform normalization so that pixel values are in range of 0-1 or 0-255,~~
 - [X] c) Perform image binarization
 - [X] d) skew correction(i.e. correct orientation)
 - [X] e) crop certain area of hand writings to preserve original writing style instead of standardize whole image size(without distorting the handwritings)
@@ -56,7 +58,7 @@ Evaluate the algorithm performance with grouped samples provided by Dr.Sophie
 Evaluate the algorithm performance with pilot dataset providing by Dr.Sophie and Professor Yaksou
 
 
-The following paragraph is being maintained by group monitors
+#### The following paragraph is being maintained by group monitors
 ### 2. Workspace and Communication channels:
 
 OLD landing page: https://docs.google.com/document/d/1IfB7Yy_RHFtP7vITMqCr6VszqwX8z4nqkPvJ8s6wOA0/edit
