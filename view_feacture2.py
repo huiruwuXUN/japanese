@@ -70,7 +70,7 @@ def main():
         plt.imshow(filter, cmap='gray')
         plt.axis("off")
         print(f"Saving layer {file} feature maps...")
-        name = out_path +file + ".png"
+        name = out_path +file
         plt.savefig(name)
 
         plt.close()

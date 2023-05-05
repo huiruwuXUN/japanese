@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a05c952-4ab5-4dd1-81e0-36e9064a2f38" name="Changes" comment="recovered Boards.md, Labels.md and Milestones.pdf" />
+    <list default="true" id="9e371343-15a0-47ed-8e66-0770ebeeb9cf" name="Changes" comment="Adding GMM method, and K-means method for clustering. Using Xiang da Li's work.">
+      <change beforePath="$PROJECT_DIR$/.idea/japanese-handwriting-analysis.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/japanese-handwriting-analysis.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clustering/.ipynb_checkpoints/kmeans-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/clustering/.ipynb_checkpoints/kmeans-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clustering/GMM.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/clustering/GMM.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clustering/kmeans.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/clustering/kmeans.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view_feacture2.py" beforeDir="false" afterPath="$PROJECT_DIR$/view_feacture2.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,17 +33,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/jinpaiduizhang/comp2120/hello_world&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/jinpaiduizhang/comp2120/hello_world"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="6a05c952-4ab5-4dd1-81e0-36e9064a2f38" name="Changes" comment="" />
+      <changelist id="9e371343-15a0-47ed-8e66-0770ebeeb9cf" name="Changes" comment="Adding GMM method, and K-means method for clustering. Using Xiang da Li's work." />
       <created>1681086754626</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -53,21 +64,7 @@
       <option name="project" value="LOCAL" />
       <updated>1682038760588</updated>
     </task>
-    <task id="LOCAL-00003" summary="got rid of the CERUG data, added rename.py to rename all jfif files to png.">
-      <created>1682929959714</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1682929959714</updated>
-    </task>
-    <task id="LOCAL-00004" summary="recovered Boards.md, Labels.md and Milestones.pdf">
-      <created>1682930492933</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1682930492933</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -84,8 +81,6 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="upload leaflets 1-50" />
     <MESSAGE value="Adding GMM method, and K-means method for clustering. Using Xiang da Li's work." />
-    <MESSAGE value="got rid of the CERUG data, added rename.py to rename all jfif files to png." />
-    <MESSAGE value="recovered Boards.md, Labels.md and Milestones.pdf" />
-    <option name="LAST_COMMIT_MESSAGE" value="recovered Boards.md, Labels.md and Milestones.pdf" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding GMM method, and K-means method for clustering. Using Xiang da Li's work." />
   </component>
 </project>
