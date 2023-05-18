@@ -44,13 +44,13 @@ def get_feacture_map():
 def main():
     conv_layers=get_feacture_map()
     #dir_path = 'leaflets'
-    dir_path='test'
+    dir_path='result3'
     file_names = os.listdir(dir_path)
     num_layer = 40
-    if not os.path.exists('output2'):
+    if not os.path.exists('output3'):
 
-        os.makedirs('output2',mode=0o777)
-    out_path = "./output2\\"
+        os.makedirs('output3',mode=0o777)
+    out_path = "./output3\\"
     # if not os.path.exists('output'):
     #     os.makedirs('output', mode=0o777)
     # out_path = "./output\\"
