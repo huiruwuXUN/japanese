@@ -6,7 +6,7 @@
 
 ### 1. MileStones and Current Objective:
 
-![Milestones](milestone.png)*Milestones*
+![Milestones](documentation/milestone.png)*Milestones*
 
 #### TODO: 
 
@@ -17,7 +17,7 @@ The files are given in a mix of file extensions (pdf, JFIF, JPEG, jpg). The chal
 for the image processing bit, our main goal is to have the image to be read 
 - [X] a) in greyscale, 
 - [X] b) perform noise reduction,
-- [X] ~~c) perform normalization so that pixel values are in range of 0-1 or 0-255,~~
+- [X] c) perform normalization so that pixel values are in range of 0-1 or 0-255,
 - [X] c) Perform image binarization
 - [X] d) skew correction(i.e. correct orientation)
 - [X] e) crop certain area of hand writings to preserve original writing style instead of standardize whole image size(without distorting the handwritings)
@@ -43,15 +43,6 @@ Alternatively we can simply use pretrained CNN to generate feature maps(which is
 
 - [ ] a) Running a K means clustering algorithm and inspecting the performance visually to get an idea how well it is, since (like most real world data) the war artifacts were not provided with ground truth label and we are nowhere to infer the actual correct ones.
 - [ ] b) GMM
-
-~~1.3.2 Introducing CERUG Dataset and the pilot dataset (see Project Description-Background):~~
-
-~~- [ ] For the CERUG dataset, we will be utilizing CERUG-cn which contains a set of Chinese handwritings that can be used to train the network to learn writing styles, since Japanese and Chinese writings are alike.~~
-~~Data preparation: split each image(by paragraph) into images that only contains a single paragraph so that to increase the size of the dataset.~~
-
-~~- [ ] Evaluate model performance on test dataset~~
-~~Improvement of feature extraction techniques or machine learning algorithms to improve the model’s performance.~~
-~~Deploying the model once achieves satisfactory results.~~
 
 4. Evaluation
 Evaluate the algorithm performance with grouped samples provided by Dr.Sophie
@@ -82,7 +73,7 @@ project management tools: Mondays,GitHubbranches, discord, and Slack(previously)
  
 Communication channels: 
 
-discord channel: [https://discord.gg/FKX85jvkdy,](https://discord.gg/sBrUTEFzvF) 
+Discord channel: [https://discord.gg/FKX85jvkdy](https://discord.gg/sBrUTEFzvF) 
 
 
-And workspace on slack(prev): https://anutechlaunch-ye91222.slack.com/archives/C04QZCV0F7W
+Slack workspace (prev): https://anutechlaunch-ye91222.slack.com/archives/C04QZCV0F7W
