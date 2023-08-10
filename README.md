@@ -6,7 +6,7 @@
 
 ### 1. MileStones and Current Objective:
 
-![Milestones](resources/milestone.png)*Milestones*
+![Milestones](README_RESOURCES/milestone.png)*Milestones*
 
 #### TODO: 
 
