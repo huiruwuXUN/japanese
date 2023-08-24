@@ -4,26 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e371343-15a0-47ed-8e66-0770ebeeb9cf" name="Changes" comment="complete word segamation">
+    <list default="true" id="9e371343-15a0-47ed-8e66-0770ebeeb9cf" name="Changes" comment="remove unnecessary files">
+      <change afterPath="$PROJECT_DIR$/ocr_jap.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ocr_jap.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/MSRF_CLASSIFICATION-checkpoint.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Patch_D-checkpoint.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/README-checkpoint.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/spatial-net-checkpoint.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/train-checkpoint.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/view_feacture-checkpoint.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/view_feacture2-checkpoint.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataloader.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/extend_img_channel.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgDemo.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/MSRF_CLASSIFICATION.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/MSRF_firemaker_IAM_model_vertical_aug_16-model_epoch_9.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/Patch_D.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/spatial-net.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/msrfc.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/patchnet.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/view_feacture.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +18,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="Jupyter Notebook" />
       </list>
     </option>
   </component>
@@ -54,21 +39,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/8715_project/japanese-handwriting-analysis&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/8715_project/japanese-handwriting-analysis",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager" selected="Python.opencv_test">
+}]]></component>
+  <component name="RunManager" selected="Python.ocr_jap">
     <configuration name="create_folder" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="japanese-handwriting-analysis" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -83,6 +69,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/create_folder.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ocr_jap" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="japanese-handwriting-analysis" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ocr_jap.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -159,6 +167,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.ocr_jap" />
         <item itemvalue="Python.opencv_test" />
         <item itemvalue="Python.string_test" />
         <item itemvalue="Python.create_folder" />
@@ -177,7 +186,9 @@
       <workItem from="1691552488717" duration="1380000" />
       <workItem from="1691553908651" duration="4605000" />
       <workItem from="1691643921247" duration="1200000" />
-      <workItem from="1691650541358" duration="328000" />
+      <workItem from="1691650541358" duration="949000" />
+      <workItem from="1692789319498" duration="1009000" />
+      <workItem from="1692850182627" duration="4664000" />
     </task>
     <task id="LOCAL-00001" summary="upload leaflets 1-50">
       <created>1681086922103</created>
@@ -214,7 +225,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691558300251</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="remove unnecessary files">
+      <created>1691650893546</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1691650893546</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -237,11 +255,13 @@
     <MESSAGE value="Complete connection between Rui's resnet work with K-means" />
     <MESSAGE value="complete visualization of clusters" />
     <MESSAGE value="complete word segamation" />
-    <option name="LAST_COMMIT_MESSAGE" value="complete word segamation" />
+    <MESSAGE value="remove unnecessary files" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove unnecessary files" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/japanese_handwriting_analysis$create_folder.coverage" NAME="create_folder Coverage Results" MODIFIED="1691552551962" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/japanese_handwriting_analysis$opencv_test.coverage" NAME="opencv_test Coverage Results" MODIFIED="1691555730889" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/japanese_handwriting_analysis$ocr_jap.coverage" NAME="ocr_jap Coverage Results" MODIFIED="1692866159234" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/japanese_handwriting_analysis$string_test.coverage" NAME="string_test Coverage Results" MODIFIED="1691554041179" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
