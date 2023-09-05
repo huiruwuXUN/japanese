@@ -7,8 +7,8 @@ def cut_img(path,file,json):
     img_path=os.path.join(path,file)
     img=cv.imread(img_path)
     saved_parent='D:\8715_project\japanese-handwriting-analysis\seg_letter'
-    file=file.split('-')
-    file=file[0].split('.')
+
+    file=file.split('.')
     saved_folder=file[0]
     counter=0
     saved_path=os.path.join(saved_parent,saved_folder)
@@ -35,20 +35,19 @@ def get_prediction_json(img):
     json=model.predict(img, confidence=25, overlap=30).json()
     return json
 def file_lookup():
-    path='D:\8715_project\japanese-handwriting-analysis\leaflets'
+    path='D:\8715_project\japanese-handwriting-analysis\high_res_png'
     path_list=os.listdir(path)
     path_list.sort(key=lambda x:str(x[:-4]))
+
     for file in path_list:
-        #rf = Roboflow(api_key="KMZmYcucQKFOHB6wfLl7")
-        #project = rf.workspace().project("japan-croxp")
-        #model = project.version(1).model
+
+        #print("file ",file)
         img_path=os.path.join(path,file)
-        print(img_path)
+        #print(img_path)
         # infer on a local image
 
         json_0=get_prediction_json(img_path)
         cut_img(path,file,json_0)
-        #print(model.predict('J01.jpg', confidence=40, overlap=30).json())
 
 
 
