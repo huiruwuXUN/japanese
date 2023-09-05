@@ -44,8 +44,8 @@ path_to_model_weights = Path(f'{model_folder}/intel/{selected_language.model_nam
 core = Core()
 path_to_model = path_to_model_weights.with_suffix(".xml")
 model = core.read_model(model=path_to_model)
-
-
+print(model)
+print(model)
 core = Core()
 
 device = widgets.Dropdown(
@@ -59,7 +59,7 @@ compiled_model = core.compile_model(model=model, device_name=device.value)
 recognition_output_layer = compiled_model.output(0)
 recognition_input_layer = compiled_model.input(0)
 
-file_name = '3.jpg'
+file_name = '25.jpg'
 
 # Text detection models expect an image in grayscale format.
 # IMPORTANT! This model enables reading only one line at time.
