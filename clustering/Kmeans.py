@@ -87,18 +87,26 @@ def evaluation(X, L_final, C_final, k):
     return length, total_distance, density
 
 
-# X = np.load("./data.npy")
+def allocator2(X, L, c):
+    cluster = []
+    idlist = []
+    for i in range(L.shape[0]):
+        if np.array_equal(L[i, :], c):
+            cluster.append(X[i, :])
+            idlist.append(i)
+    return idlist
+
+
 def main():
     train_images = []
     path = "../output"
     for file in os.listdir(path):
-        if file.endswith(".png"):
+        if file.endswith(".jpg"):
             im = cv2.imread(path + "/" + file)
             y = list(im.ravel())
             y = np.array(y)
             # im =imread(path + "/" + file)
             train_images.append(y)
-
     X = np.array(train_images)
     m, n = X.shape
     pca = PCA(n_components=min(m, n), random_state=2023)
@@ -119,7 +127,6 @@ def main():
         length, total_distance, density = evaluation(X, L_final, C_final, k)
         yaxis.append(total_distance)
         densityaxis.append(density)
-        print(k, end=" ")
         if (length != X.shape[0]):
             print("Error, when i = " + str(i) + " the clusters start overlapping: " + str(length))
             wrongtimes += 1
@@ -135,6 +142,21 @@ def main():
     plt.xlabel("Number of potential cluster")
     plt.ylabel("sparseness")
     plt.show()
+
+
+    k = 10  # Use this to see the cluster circumstance in specific cluster number
+    C_f, L_f = kmeans(X, k, 1e-6)
+    total_img = []
+
+    for i in range(k):
+        idlist = allocator2(X, L_f, C_f[i, :])
+        total_img.append(np.array(idlist))
+
+
+    # index of images
+    print("If you set the cluster number to be " + str(k) +"clusters: ")
+    print(total_img)
+    print("change k in line 147 to see performance under different clusters")
 
 
 if __name__ == '__main__':
