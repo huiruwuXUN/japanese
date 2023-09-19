@@ -11,25 +11,26 @@ ws.append(["Folder Name", "File Name", "OCR Result"])
 
 
 folder_name = "example_folder"
+with open(f"{folder_name}/{file_name}", "rb") as image_file:
+    content = image_file.read()
+
+    image = vision.Image(content=content)
+    response = client.text_detection(image=image)
+                texts = response.text_annotations
+
+                if texts:
+                    ocr_result = texts[0].description
+                else:
+                    ocr_result = "No text detected"
 
 
-for file_name in os.listdir(folder_name):
-    if file_name.lower().endswith(('.png', '.jpg', '.jpeg')):
+def write_excel(result):
+    for file_name in os.listdir(folder_name):
+        if file_name.lower().endswith(('.png', '.jpg', '.jpeg')):
         #OCR
-        with open(f"{folder_name}/{file_name}", "rb") as image_file:
-            content = image_file.read()
-            image = vision.Image(content=content)
-
-            response = client.text_detection(image=image)
-            texts = response.text_annotations
-
-            if texts:
-                ocr_result = texts[0].description
-            else:
-                ocr_result = "No text detected"
 
 
-        ws.append([folder_name, file_name, ocr_result])
+            ws.append([folder_name, file_name, ocr_result])
 
 
 wb.save("OCR_Results.xlsx")
