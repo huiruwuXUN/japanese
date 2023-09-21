@@ -7,7 +7,6 @@ from torch import nn
 
 
 # append all the conv layers and their respective weights to the list
-
 transformer = transforms.Compose([
     transforms.Resize(256),
     #transforms.CenterCrop(224),
@@ -18,7 +17,7 @@ transformer = transforms.Compose([
     #)
 ])
 
-
+# Function to extract the feature map of the given image
 def get_feacture_map():
     model = models.resnet50(pretrained=True)
     print(model)
@@ -26,6 +25,8 @@ def get_feacture_map():
     conv_layers = []  # we will save the 49 conv layers in this list
     model_children = list(model.children())
     counter = 0
+    
+    # Loop to get the conv layers and their respective weights
     for i in range(len(model_children)):
         if type(model_children[i]) == nn.Conv2d:
             counter += 1
@@ -55,6 +56,7 @@ def main():
     #     os.makedirs('output', mode=0o777)
     # out_path = "./output\\"
 
+    # Loop through the images and save the 2nd filter
     for file in file_names:
         #print(os.path.join(dir_path, file))
         image_path = os.path.join(dir_path, file)
@@ -69,7 +71,6 @@ def main():
         layer_viz = outputs[0, :, :, :]
         layer_viz = layer_viz.data
         filter=layer_viz[38]
-
 
         plt.imshow(filter, cmap='gray')
         plt.axis("off")
