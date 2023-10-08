@@ -43,5 +43,5 @@ def process_json(input_path, output_path):
 
 # 使用函数
 input_path = 'D:\8715_project\japanese-handwriting-analysis\pilot_json\pilot_enhence.json'
-output_path = 'averagepooling.json'
+output_path = 'json/averagepooling.json'
 process_json(input_path, output_path)

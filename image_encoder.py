@@ -30,7 +30,7 @@ if __name__ == "__main__":
 
     folders = {
 
-        r"D:\8715_project\japanese-handwriting-analysis\pilot_enhence": "D:\8715_project\japanese-handwriting-analysis\pilot_json"
+        r"D:\8715_project\japanese-handwriting-analysis\seg_letter_enhance": "D:\8715_project\japanese-handwriting-analysis\seg_enhence_json"
     }
 
     for input_folder, output_folder in folders.items():
