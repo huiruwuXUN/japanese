@@ -1,52 +1,33 @@
 # International collaborate on hand-writing project
 
-
-
-
+User document: see How_to_run_the_project.pdf
 
 ### 1. MileStones and Current Objective:
 
-![Milestones](README_RESOURCES/milestone.png)*Milestones*
+![Milestones](README_RESOURCES/milestone_2023S2%20.jpg)*Milestones*
 
-#### TODO: 
+#### details image preprocessing: 
 
-1. Data preparations of the 300 digital version of historical artifacts
+Image preprocessing is crucial for the Pair Creation stage, as it enhances the quality of images through contrast enhancement and sharpening, making important features more prominent. This aids in accurate recognition and learning of information within the images by the model. Additionally, image normalization ensures that the pixel values across all images are within the same range, promoting data consistency and stabilizing model training. The denoising and background removal in preprocessing reduce interference in the images, enabling the model to focus more on the primary content of the images, thereby generating clearer and cleaner image pairs during the Pair Creation stage. This not only improves computational efficiency and accelerates the generation of positive and negative image pairs, but also allows for visual inspection to verify the effects of preprocessing, ensuring that high-quality and consistent image data is provided for model training.
+see details: confluence report[(https://international-japanese-collab.atlassian.net/wiki/spaces/LP/pages/28311553/Report+on+OCR+method+progress+plan+and+constraints)]
 
-The files are given in a mix of file extensions (pdf, JFIF, JPEG, jpg). The challenging bit is to understand the given files and how to preprocess the images with computer vision tools(potentially to be done with OpenCV python library) to standardize the size (Character Detection), format and orientation. Further image enhancement techniques can be applied such as normalization, binarization and noise reduction to improve the quality of the images.
+#### Branch out (Siamese Neural Network):
+Training a Siamese neural network for handwriting analysis to identify whether two Japanese characters are written by the same person involves several steps. Below is a general guideline:
 
-for the image processing bit, our main goal is to have the image to be read 
-- [X] a) in greyscale, 
-- [X] b) perform noise reduction,
-- [X] c) perform normalization so that pixel values are in range of 0-1 or 0-255,
-- [X] c) Perform image binarization
-- [X] d) skew correction(i.e. correct orientation)
-- [X] e) crop certain area of hand writings to preserve original writing style instead of standardize whole image size(without distorting the handwritings)
+Overview of Siamese Neural Network
 
-2. Feature extraction
+A Siamese neural network consists of two identical subnetworks, which are used to extract features from two input images. The outputs of these subnetworks are then compared to compute a similarity score, which is used to determine whether the two input images are similar or dissimilar.
+see details: confluence report[(https://international-japanese-collab.atlassian.net/wiki/spaces/LP/pages/28213266/Siamese+Neural+Network)]
  
-An important part of the project which also involves feature engineering or data augmentation.
-- [ ] a) Histogram of Oriented Gradients(HOG), 
-- [ ] b) Scale-Invariant Feature Transform(SIFT) and 
-- [ ] c) Local Binary Patterns(LBP) 
-can be used to capture unique characteristics of the handwriting style of each writer.
 
-Alternatively we can simply use pretrained CNN to generate feature maps(which is probably better for objects instead of characters)
-- [X] d) pretrained ResNet
+#### Branch out (OCR method):
+Our current approach is outlined in the project milestones. We believe that the cropped images we are using are sufficient for our present needs. After initial image preprocessing, we employ the OCR method provided by Google's API to recognize each character. Following this, we evaluate the accuracy using our API and identify various constraints. Our future steps involve the implementation of a neural network that encodes images into vectors, which will then be used to train our model. Subsequently, we will apply clustering techniques we learned last semester to obtain clustering results.
+see details: confluence report[(https://international-japanese-collab.atlassian.net/wiki/spaces/LP/pages/28311553/Report+on+OCR+method+progress+plan+and+constraints)]
 
-<!-- ![spatial net|320x271, 50%](model/spatial-net.jpeg)*spatial*
 
-![Patch_D](model/Patch_D.png)*Patch_D*
-
-![MSRF_CLASSIFICATION](model/MSRF_CLASSIFICATION.jpeg)*MSRF* -->
-
-3. Clustering algorithms
-
-- [ ] a) Running a K means clustering algorithm and inspecting the performance visually to get an idea how well it is, since (like most real world data) the war artifacts were not provided with ground truth label and we are nowhere to infer the actual correct ones.
-- [ ] b) GMM
-
-4. Evaluation
-Evaluate the algorithm performance with grouped samples provided by Dr.Sophie
-Evaluate the algorithm performance with pilot dataset providing by Dr.Sophie and Professor Yaksou
+#### Branch out (image encoding):
+Based on the recommendation of Dr. Mohammed, we sought to enhance the original set of images through various techniques, such as increasing contrast and binarization. The objective was to investigate the potential benefits of these enhancements on the embeddings produced by the CLIP model. By examining the cosine similarity between embeddings, we aimed to determine the most effective enhancement method.
+see details: confluence report[(https://international-japanese-collab.atlassian.net/wiki/spaces/LP/pages/27754508/Report+on+Image+Enhancement+Techniques+for+Improved+Embeddings)]
 
 
 #### The following paragraph is being maintained by group monitors
