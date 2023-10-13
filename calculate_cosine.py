@@ -21,11 +21,11 @@ def compute_average_cosine_distance(features, image_paths):
     return avg_distance
 
 if __name__ == "__main__":
-    # 读取JSON文件
+    # read the json file
     json_file = r"D:\8715_project\japanese-handwriting-analysis\seg_enhence_json\seg_letter_enhance.json"
     features = read_features_from_json(json_file)
 
-    # 根据图片路径识别所在子文件夹并计算平均余弦距离
+    # compute cosine sim
     subdir_to_avg_distance = {}
     for image_path in features.keys():
         subdir = os.path.dirname(image_path)
@@ -36,7 +36,7 @@ if __name__ == "__main__":
             avg_distance = compute_average_cosine_distance(features, subdir_images)
             subdir_to_avg_distance[subdir] = avg_distance
 
-    # 将结果保存到Excel文件中
+    # save to excel file
     df = pd.DataFrame(list(subdir_to_avg_distance.items()), columns=["Subfolder", "Average Cosine Distance"])
     excel_path = "D:\\8715_project\\japanese-handwriting-analysis\\average_cosine_distances_enhence.xlsx"
     df.to_excel(excel_path, index=False)

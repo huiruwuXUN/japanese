@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e371343-15a0-47ed-8e66-0770ebeeb9cf" name="Changes" comment="MODIFY file name, structure,add instruction on how to run the project">
-      <change beforePath="$PROJECT_DIR$/bin_img.py" beforeDir="false" afterPath="$PROJECT_DIR$/Image_processing/bin_img.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enhence_contrast.py" beforeDir="false" afterPath="$PROJECT_DIR$/Image_processing/enhence_contrast.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ocr_jap.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ocr_jap.py" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/random_select_average_pooling.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/average_pooling.py" beforeDir="false" afterPath="$PROJECT_DIR$/average_pooling.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calculate_cosine.py" beforeDir="false" afterPath="$PROJECT_DIR$/calculate_cosine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clustering.py" beforeDir="false" afterPath="$PROJECT_DIR$/clustering.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image_encoder.py" beforeDir="false" afterPath="$PROJECT_DIR$/image_encoder.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +61,10 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\jinpaiduizhang\japanese-handwriting-analysis\clustering" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\8715_project\japanese-handwriting-analysis\Image_processing" />
+      <recent name="D:\8715_project\japanese-handwriting-analysis\json" />
+    </key>
   </component>
   <component name="RunManager" selected="Python.clustering">
     <configuration name="average_pooling (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -75,28 +81,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/average_pooling.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="average_pooling" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="japanese-handwriting-analysis" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="D:\8715_project\japanese-handwriting-analysis\average_pooling.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -149,7 +133,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="image_encoder" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="random_select_average_pooling" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="japanese-handwriting-analysis" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -162,7 +146,29 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/image_encoder.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/random_select_average_pooling.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="read_json" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="japanese-handwriting-analysis" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/json" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/json/read_json.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -174,10 +180,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.clustering" />
-        <item itemvalue="Python.calculate_cosine" />
-        <item itemvalue="Python.image_encoder" />
+        <item itemvalue="Python.read_json" />
+        <item itemvalue="Python.random_select_average_pooling" />
         <item itemvalue="Python.average_pooling (1)" />
-        <item itemvalue="Python.average_pooling" />
+        <item itemvalue="Python.calculate_cosine" />
       </list>
     </recent_temporary>
   </component>
@@ -206,7 +212,10 @@
       <workItem from="1696478016589" duration="4635000" />
       <workItem from="1696552393538" duration="2426000" />
       <workItem from="1696649337706" duration="2581000" />
-      <workItem from="1696762432673" duration="303000" />
+      <workItem from="1696762432673" duration="1083000" />
+      <workItem from="1696917960938" duration="2847000" />
+      <workItem from="1697076690846" duration="5568000" />
+      <workItem from="1697158017680" duration="681000" />
     </task>
     <task id="LOCAL-00001" summary="upload leaflets 1-50">
       <created>1681086922103</created>
@@ -299,7 +308,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696762553485</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="MODIFY file name, structure,add instruction on how to run the project">
+      <created>1696762765754</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1696762765754</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -329,17 +345,18 @@
     <option name="LAST_COMMIT_MESSAGE" value="MODIFY file name, structure,add instruction on how to run the project" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/japanese_handwriting_analysis$enhence_contrast.coverage" NAME="enhence_contrast Coverage Results" MODIFIED="1696152932736" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/japanese_handwriting_analysis$create_folder.coverage" NAME="create_folder Coverage Results" MODIFIED="1693902369612" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/japanese_handwriting_analysis$clustering.coverage" NAME="clustering Coverage Results" MODIFIED="1696553351683" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/japanese_handwriting_analysis$read_json.coverage" NAME="read_json Coverage Results" MODIFIED="1695108763360" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/img_embeding_json" />
     <SUITE FILE_PATH="coverage/japanese_handwriting_analysis$ocr_jap.coverage" NAME="ocr_jap Coverage Results" MODIFIED="1693388807577" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/japanese_handwriting_analysis$util.coverage" NAME="util Coverage Results" MODIFIED="1695107398580" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/japanese_handwriting_analysis$opencv_test.coverage" NAME="opencv_test Coverage Results" MODIFIED="1695796025231" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/japanese_handwriting_analysis$image_encoder.coverage" NAME="image_encoder Coverage Results" MODIFIED="1696389915566" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/japanese_handwriting_analysis$string_test.coverage" NAME="string_test Coverage Results" MODIFIED="1691554041179" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/japanese_handwriting_analysis$enhence_contrast.coverage" NAME="enhence_contrast Coverage Results" MODIFIED="1696152932736" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/japanese_handwriting_analysis$random_select_average_pooling.coverage" NAME="random_select_average_pooling Coverage Results" MODIFIED="1697079218443" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/japanese_handwriting_analysis$clustering.coverage" NAME="clustering Coverage Results" MODIFIED="1697081028075" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/japanese_handwriting_analysis$read_json.coverage" NAME="read_json Coverage Results" MODIFIED="1697079803185" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/json" />
+    <SUITE FILE_PATH="coverage/japanese_handwriting_analysis$util.coverage" NAME="util Coverage Results" MODIFIED="1695107398580" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/japanese_handwriting_analysis$k_mean.coverage" NAME="k-mean Coverage Results" MODIFIED="1696157064043" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/japanese_handwriting_analysis$calculate_cosine.coverage" NAME="calculate_cosine Coverage Results" MODIFIED="1696390209051" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/img_embeding_json" />
-    <SUITE FILE_PATH="coverage/japanese_handwriting_analysis$string_test.coverage" NAME="string_test Coverage Results" MODIFIED="1691554041179" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/japanese_handwriting_analysis$average_pooling__1_.coverage" NAME="average_pooling (1) Coverage Results" MODIFIED="1696307862969" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/japanese_handwriting_analysis$average_pooling__1_.coverage" NAME="average_pooling (1) Coverage Results" MODIFIED="1696924203892" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

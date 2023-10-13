@@ -1,32 +1,37 @@
+import numpy
+
 import json
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.cluster import SpectralClustering
 from sklearn.metrics.pairwise import cosine_similarity
+import random
 
-# 1. 读取JSON数据
-with open(r'D:\8715_project\japanese-handwriting-analysis\averagepooling.json', 'r') as f:
+
+
+# 1. read the json file that generate from average_pooling
+with open(r'D:\8715_project\japanese-handwriting-analysis\json\averagepooling3.json', 'r') as f:
     data = json.load(f)
 
-# 2. 合并所有向量为一个数组
-all_vectors = []
-for key, vectors in data.items():
-    all_vectors.append(vectors)
+# 2. random select some vectors
+num_selected_keys = 8
+selected_keys = random.choices(list(data.keys()), k=num_selected_keys)
+all_vectors = [data[key] for key in selected_keys]
+print(selected_keys)
+unique_key_count = len(set(selected_keys))
+print(f"Number of Unique Keys: {unique_key_count}")
+vec_array=numpy.array(all_vectors)
 
-vec_array = np.array(all_vectors)
-print(vec_array.shape)
 
-# 3. 计算余弦相似度
 cosine_sim = cosine_similarity(vec_array)
 
-# 4. 绘制失真图
-n_clusters_range = range(1, 20)  # 可以根据实际需要调整
+n_clusters_range = range(1, num_selected_keys+1)  # 可以根据实际需要调整
 
 distortions = []
 
 for n_clusters in n_clusters_range:
     spectral_clustering = SpectralClustering(n_clusters=n_clusters, affinity='precomputed', random_state=0)
-    cluster_labels = spectral_clustering.fit_predict(1 - cosine_sim)  # 使用余弦相似度的倒数
+    cluster_labels = spectral_clustering.fit_predict(1-cosine_sim)  # 使用余弦相似度的倒数
 
     cluster_centers = np.zeros((n_clusters, vec_array.shape[1]))
 
