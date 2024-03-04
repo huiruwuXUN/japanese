@@ -4,7 +4,7 @@ User document: see How_to_run_the_project.pdf
 
 ### 1. MileStones and Current Objective:
 
-![Milestones](README_RESOURCES/milestone_2023S2%20.jpg)*Milestones*
+![Milestones](README_RESOURCES/milestone.jpg)*Milestones*
 
 #### details image preprocessing: 
 
