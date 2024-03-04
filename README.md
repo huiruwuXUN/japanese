@@ -44,12 +44,12 @@ OLD landing page: https://docs.google.com/document/d/1IfB7Yy_RHFtP7vITMqCr6Vszqw
 **Password: confluence321**
 
 -----------------
-Google Drive:https://drive.google.com/drive/folders/1hecIuxT4ad-6tQBP7q64SHWG3DRKsFKW
+Google Drive:https://drive.google.com/drive/folders/1n_8uhsdWP3Ut8A0Pgi16JppDBslVZXca?usp=drive_link
 
 Miro: https://miro.com/app/board/uXjVPjUkjFU=/?share_link_id=70743626073
 ![Problematisation](README_RESOURCES/problematisation.png)*problematisation*
  
-Statement of Work(also linked within landing page): https://docs.google.com/document/d/1EtdTE8EcNiLc0zZhhfSrFLprn_pdXndhCRASWU9sTWw/edit?pli=1#heading=h.rp8cc29r2wlp
+Statement of Work(also linked within landing page): https://docs.google.com/document/d/1lRQWLmKNq1zngWD5TLfB2V3xWY6duf94/edit?usp=drive_link&ouid=115781293696065917780&rtpof=true&sd=true
  
 project management tools: Mondays,GitHubbranches, discord, and Slack(previously)
  
