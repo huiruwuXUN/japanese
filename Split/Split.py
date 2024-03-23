@@ -3,7 +3,7 @@ import re
 
 def split_characters(input_excel, output_excel):
     try:
-        # Open the input Excel file
+        
         wb = openpyxl.load_workbook(input_excel)
         sheet = wb.active
         
