@@ -145,11 +145,12 @@ def main(train_model, img_dir, save_dir):
 
 if __name__ == "__main__":
     # args using in the code/
-    train_model = False
-    image_dir = 'character_classifying_cnn\outputs\images\pilot_set'
+    train_model = True
+    test_image_dir = 'character_classifying_cnn\outputs\images\pilot_set'
+    train_image_dir = 'character_classifying_cnn\outputs\images'
     output_dir = 'character_classifying_cnn/outputs/models/model_1.pth'
 
 
-    main(train_model, image_dir, output_dir)
+    main(train_model, train_image_dir, output_dir)
 
 
