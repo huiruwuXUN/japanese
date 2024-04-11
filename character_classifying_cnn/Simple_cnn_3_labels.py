@@ -17,7 +17,7 @@ def image_preprocessing(img_name):
     img_resized_normalized = img_resized.astype('float32') / 255.0
     return img_resized_normalized
 
-def dataset(class_names, root_path, if_split=True):
+def dataset(class_names, root_path):
     """
         Preprocess the image and build up the datasets.
     """
@@ -47,18 +47,15 @@ def dataset(class_names, root_path, if_split=True):
     labels_tensor = torch.tensor(labels_one_hot).float()
 
     dataset = TensorDataset(images_tensor, labels_tensor)
-    batch_size = 64
-    if if_split:
-        train_size = int(0.8 * len(dataset))
-        val_size = len(dataset) - train_size
-        train_dataset, val_dataset = random_split(dataset, [train_size, val_size])
-        train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
-        val_loader = DataLoader(val_dataset, batch_size=batch_size)
 
-        return train_loader, val_loader, n_classes
-    else:
-        data_loader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
-        return data_loader, n_classes
+    train_size = int(0.8 * len(dataset))
+    val_size = len(dataset) - train_size
+    train_dataset, val_dataset = random_split(dataset, [train_size, val_size])
+    batch_size = 64
+    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+    val_loader = DataLoader(val_dataset, batch_size=batch_size)
+
+    return train_loader, val_loader, n_classes
 
 class SimpleCNN(nn.Module):
     def __init__(self, num_classes):
@@ -122,32 +119,22 @@ def main(train_model, img_dir, save_dir):
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     print(f"Using device: {device}")
 
+    train_loader, val_loader, num_classes = dataset(['hiragana', 'katakana', 'kanji'], img_dir)
+    model = SimpleCNN(num_classes).to(device)
+
+    criterion = nn.CrossEntropyLoss()
+    optimizer = optim.Adam(model.parameters(), lr=0.001)
 
     if train_model:
-        train_loader, val_loader, num_classes = dataset(['kana', 'kanji'], img_dir)
-        model = SimpleCNN(num_classes).to(device)
-
-        criterion = nn.CrossEntropyLoss()
-        optimizer = optim.Adam(model.parameters(), lr=0.001)
-        train(model, train_loader, criterion, optimizer, device, epochs=20)
+        train(model, train_loader, criterion, optimizer, device, epochs=70)
         validate(model, val_loader, criterion, device)
         torch.save(model.state_dict(), save_dir)
 
-    else:
-        val_loader, num_classes = dataset(['kana', 'kanji'], img_dir, if_split=False)
-        model = SimpleCNN(num_classes).to(device)
-
-        criterion = nn.CrossEntropyLoss()
-        optimizer = optim.Adam(model.parameters(), lr=0.001)
-        model.load_state_dict(torch.load(save_dir))
-        validate(model, val_loader, criterion, device)
-
-
 if __name__ == "__main__":
-    # args using in the code/
-    train_model = False
-    image_dir = 'character_classifying_cnn\outputs\images\pilot_set'
-    output_dir = 'character_classifying_cnn/outputs/models/model_1.pth'
+    # args using in the code
+    train_model = True
+    image_dir = 'character_classifying_cnn\outputs\images'
+    output_dir = 'character_classifying_cnn/outputs/models/model_3.pth'
 
 
     main(train_model, image_dir, output_dir)
