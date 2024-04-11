@@ -226,7 +226,7 @@ def main(train_model, img_dir, save_dir):
         train_loader, val_loader, num_classes = dataset(['kana', 'kanji'], img_dir)
         model = SimpleCNN(num_classes).to(device)
 
-        criterion = nn.CrossEntropyLoss()
+        criterion = nn.NLLLoss()
         optimizer = optim.Adam(model.parameters(), lr=1e-5)
         train(model, train_loader, val_loader,criterion, optimizer, device, epochs=100)
         # validate(model, val_loader, criterion, device)
@@ -236,7 +236,7 @@ def main(train_model, img_dir, save_dir):
         val_loader, num_classes = dataset(['kana', 'kanji'], img_dir, if_split=False)
         model = SimpleCNN(num_classes).to(device)
 
-        criterion = nn.CrossEntropyLoss()
+        criterion = nn.NLLLoss()
         # optimizer = optim.Adam(model.parameters(), lr=0.001)
         model.load_state_dict(torch.load(save_dir))
         validate(model, val_loader, criterion, device)
@@ -249,7 +249,7 @@ if __name__ == "__main__":
     train_model = True
     test_image_dir = 'character_classifying_cnn\outputs\images\pilot_set'
     train_image_dir = 'character_classifying_cnn\outputs\images'
-    output_dir = 'character_classifying_cnn/outputs/models/model_3.pth'
+    output_dir = 'character_classifying_cnn/outputs/models/model_4.pth'
 
 
     main(train_model, train_image_dir, output_dir)
