@@ -11,6 +11,7 @@ import torch.nn.functional as F
 from torch.utils.data import DataLoader, TensorDataset, random_split
 from torchvision import transforms
 from PIL import Image
+import csv
 
 def set_seed(seed_value=42):
     """设置随机数种子以确保实验结果的可重复性"""
@@ -70,10 +71,6 @@ def dataset(class_names, root_path, if_split=True):
                 img_processed = image_preprocessing(img_path)
                 images.append(img_processed)
                 labels.append(label)
-                # for i in range(5):
-                #     img_processed = image_preprocessing(img_path, if_aug=True)
-                #     images.append(img_processed)
-                #     labels.append(label)
 
     images_np = np.array(images)
     labels_np = np.array(labels)
@@ -98,26 +95,6 @@ def dataset(class_names, root_path, if_split=True):
         data_loader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
         return data_loader, n_classes
 
-# class SimpleCNN(nn.Module):
-#     def __init__(self, num_classes):
-#         super(SimpleCNN, self).__init__()
-#         self.conv1 = nn.Conv2d(1, 16, kernel_size=5, stride=1, padding=2)
-#         self.pool = nn.MaxPool2d(kernel_size=2, stride=2, padding=0)
-        
-#         self.conv2 = nn.Conv2d(16, 32, kernel_size=5, stride=1, padding=2)
-        
-#         self.fc1 = nn.Linear(32 * 16 * 16, 120)
-#         self.fc2 = nn.Linear(120, 84)
-#         self.fc3 = nn.Linear(84, num_classes)
-
-#     def forward(self, x):
-#         x = self.pool(F.relu(self.conv1(x)))
-#         x = self.pool(F.relu(self.conv2(x)))
-#         x = x.view(-1, 32 * 16 * 16)
-#         x = F.relu(self.fc1(x))
-#         x = F.relu(self.fc2(x))
-#         x = self.fc3(x)
-#         return F.log_softmax(x, dim=1)
     
 class SimpleCNN(nn.Module):
     def __init__(self, num_classes):
@@ -217,7 +194,33 @@ def validate(model, val_loader, criterion, device):
     print(f'Validation Loss: {val_loss / len(val_loader)}')
     print(f'Accuracy: {100 * correct / total}%')
 
-def main(train_model, img_dir, save_dir):
+def inference(model, folder_path, save_dir, device):
+    image_names = []
+    images = []
+    model.eval()
+    for img_name in os.listdir(folder_path):
+        img_path = os.path.join(folder_path, img_name)
+        if img_path.lower().endswith(('.png', '.jpg', '.jpeg')):
+            img_processed = image_preprocessing(img_path)
+            image_names.append(img_name)
+            images.append(torch.tensor(img_processed).unsqueeze(0).unsqueeze(0).to(device))
+
+    file_name = f'{save_dir}/class_Monica.csv'
+    with open(file_name, 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(['Image_name', 'Class'])
+        for i in range(len(image_names)):
+            label = model(images[i])
+            if label[0, 0] > label[0, 1]:
+                writer.writerow([image_names[i], 'Kana'])
+            else:
+                writer.writerow([image_names[i], 'Kanji'])
+
+
+
+
+
+def main(train_model, valid, to_inference, img_dir, save_dir):
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     print(f"Using device: {device}")
 
@@ -232,7 +235,7 @@ def main(train_model, img_dir, save_dir):
         # validate(model, val_loader, criterion, device)
         torch.save(model.state_dict(), save_dir)
 
-    else:
+    elif valid:
         val_loader, num_classes = dataset(['kana', 'kanji'], img_dir, if_split=False)
         model = SimpleCNN(num_classes).to(device)
 
@@ -241,18 +244,25 @@ def main(train_model, img_dir, save_dir):
         model.load_state_dict(torch.load(save_dir))
         validate(model, val_loader, criterion, device)
 
+    elif to_inference:
+        model = SimpleCNN(2).to(device)
+        criterion = nn.NLLLoss()
+        model.load_state_dict(torch.load(save_dir))
+        inference(model, img_dir, 'character_classifying_cnn/outputs', device)
+        
+
 
 if __name__ == "__main__":
 
     set_seed(42)
     
-    train_model = True
-    test_image_dir = 'character_classifying_cnn\outputs\images\pilot_set'
+    train_model = False
+    to_inference = True
+    test_image_dir = 'character_classifying_cnn\outputs\images\Monica'
     train_image_dir = 'character_classifying_cnn\outputs\images'
     output_dir = 'character_classifying_cnn/outputs/models/model_4.pth'
 
 
-    main(train_model, train_image_dir, output_dir)
-    main(False, test_image_dir, output_dir)
+    main(False, False, to_inference, test_image_dir, output_dir)
 
 
