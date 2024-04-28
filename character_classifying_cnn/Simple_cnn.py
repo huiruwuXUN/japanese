@@ -246,12 +246,13 @@ if __name__ == "__main__":
 
     set_seed(42)
     
-    train_model = True
-    test_image_dir = 'character_classifying_cnn\outputs\images\pilot_set'
+    train_model = False
+    test_image_dir = '../../../../pilot data/data/B'# dir/dir/image
+    
     train_image_dir = 'character_classifying_cnn\outputs\images'
     output_dir = 'character_classifying_cnn/outputs/models/model_4.pth'
-
-
+    
+    
     main(train_model, train_image_dir, output_dir)
     main(False, test_image_dir, output_dir)
 
