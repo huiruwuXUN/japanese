@@ -257,6 +257,16 @@ if __name__ == "__main__":
     set_seed(42)
     
     train_model = False
+<<<<<<< HEAD
+    test_image_dir = '../../../../pilot data/data/B'# dir/dir/image
+    
+    train_image_dir = 'character_classifying_cnn\outputs\images'
+    output_dir = 'character_classifying_cnn/outputs/models/model_4.pth'
+    
+    
+    main(train_model, train_image_dir, output_dir)
+    main(False, test_image_dir, output_dir)
+=======
     to_inference = True
     test_image_dir = 'character_classifying_cnn\outputs\images\Monica'
     train_image_dir = 'character_classifying_cnn\outputs\images'
@@ -264,5 +274,6 @@ if __name__ == "__main__":
 
 
     main(False, False, to_inference, test_image_dir, output_dir)
+>>>>>>> main
 
 
