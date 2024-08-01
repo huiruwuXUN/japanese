@@ -12,6 +12,7 @@ from torch.utils.data import DataLoader, TensorDataset, random_split
 from torchvision import transforms
 from PIL import Image
 import csv
+import csv
 
 def set_seed(seed_value=42):
     """设置随机数种子以确保实验结果的可重复性"""
@@ -221,6 +222,33 @@ def inference(model, folder_path, save_dir, device):
 
 
 def main(train_model, valid, to_inference, img_dir, save_dir):
+def inference(model, folder_path, save_dir, device):
+    image_names = []
+    images = []
+    model.eval()
+    for img_name in os.listdir(folder_path):
+        img_path = os.path.join(folder_path, img_name)
+        if img_path.lower().endswith(('.png', '.jpg', '.jpeg')):
+            img_processed = image_preprocessing(img_path)
+            image_names.append(img_name)
+            images.append(torch.tensor(img_processed).unsqueeze(0).unsqueeze(0).to(device))
+
+    file_name = f'{save_dir}/class_Monica.csv'
+    with open(file_name, 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(['Image_name', 'Class'])
+        for i in range(len(image_names)):
+            label = model(images[i])
+            if label[0, 0] > label[0, 1]:
+                writer.writerow([image_names[i], 'Kana'])
+            else:
+                writer.writerow([image_names[i], 'Kanji'])
+
+
+
+
+
+def main(train_model, valid, to_inference, img_dir, save_dir):
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     print(f"Using device: {device}")
 
@@ -235,6 +263,7 @@ def main(train_model, valid, to_inference, img_dir, save_dir):
         # validate(model, val_loader, criterion, device)
         torch.save(model.state_dict(), save_dir)
 
+    elif valid:
     elif valid:
         val_loader, num_classes = dataset(['kana', 'kanji'], img_dir, if_split=False)
         model = SimpleCNN(num_classes).to(device)
@@ -251,22 +280,19 @@ def main(train_model, valid, to_inference, img_dir, save_dir):
         inference(model, img_dir, 'character_classifying_cnn/outputs', device)
         
 
+    elif to_inference:
+        model = SimpleCNN(2).to(device)
+        criterion = nn.NLLLoss()
+        model.load_state_dict(torch.load(save_dir))
+        inference(model, img_dir, 'character_classifying_cnn/outputs', device)
+        
+
 
 if __name__ == "__main__":
 
     set_seed(42)
     
     train_model = False
-<<<<<<< HEAD
-    test_image_dir = '../../../../pilot data/data/B'# dir/dir/image
-    
-    train_image_dir = 'character_classifying_cnn\outputs\images'
-    output_dir = 'character_classifying_cnn/outputs/models/model_4.pth'
-    
-    
-    main(train_model, train_image_dir, output_dir)
-    main(False, test_image_dir, output_dir)
-=======
     to_inference = True
     test_image_dir = 'character_classifying_cnn\outputs\images\Monica'
     train_image_dir = 'character_classifying_cnn\outputs\images'
@@ -274,6 +300,5 @@ if __name__ == "__main__":
 
 
     main(False, False, to_inference, test_image_dir, output_dir)
->>>>>>> main
 
 

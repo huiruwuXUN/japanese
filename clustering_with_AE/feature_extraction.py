@@ -7,6 +7,7 @@ from auto_encoder import AutoEncoder
 from dataset import get_dataloader, transform
 from extract_images import image_extraction_from_file
 from sklearn.cluster import KMeans
+from cluster_visualization import *
 
 
 def extract_features(model, dataloader, device):
@@ -59,5 +60,7 @@ def main():
     # 计算相同元素的占比
     similarity_ratio = np.mean(matching_elements)
     print(similarity_ratio)
+
+    plot_clustered_data(features, labels=ground_truth, n_clusters=6)
 
 main()

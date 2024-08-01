@@ -1,2 +1,7 @@
 character_classifying_cnn/outputs/images
+character_classifying_cnn/outputs/images
 character_classifying_cnn/fonts
+clustering_with_AE/__pycache__/auto_encoder.cpython-311.pyc
+clustering_with_AE/__pycache__/cluster_visualization.cpython-311.pyc
+clustering_with_AE/models/model_1.pth
+image_dataset/
