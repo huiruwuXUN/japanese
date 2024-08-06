@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="9e371343-15a0-47ed-8e66-0770ebeeb9cf" name="Changes" comment="MODIFY file name, structure,add instruction on how to run the project">
       <change afterPath="$PROJECT_DIR$/character_classifying_cnn/outputs/class.csv" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/character_classifying_cnn/outputs/class_B.csv" afterDir="false" />
@@ -20,6 +21,9 @@
       <change afterPath="$PROJECT_DIR$/clustering_with_AE/models/model_1.pth" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/character_classifying_cnn/Simple_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/character_classifying_cnn/Simple_cnn.py" afterDir="false" />
     </list>
+=======
+    <list default="true" id="9e371343-15a0-47ed-8e66-0770ebeeb9cf" name="Changes" comment="MODIFY file name, structure,add instruction on how to run the project" />
+>>>>>>> zhishang
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,7 +66,11 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+<<<<<<< HEAD
     "git-widget-placeholder": "Merging zhishang",
+=======
+    "git-widget-placeholder": "zhishang",
+>>>>>>> zhishang
     "last_opened_file_path": "/Users/yoko/PycharmProjects/japanese-handwriting-analysis/kana_kanji_classifying",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
