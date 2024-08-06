@@ -5,20 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e371343-15a0-47ed-8e66-0770ebeeb9cf" name="Changes" comment="MODIFY file name, structure,add instruction on how to run the project">
-      <change afterPath="$PROJECT_DIR$/character_classifying_cnn/outputs/class.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/character_classifying_cnn/outputs/class_B.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/character_classifying_cnn/outputs/class_C.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/character_classifying_cnn/outputs/class_D.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/character_classifying_cnn/outputs/class_Denvour.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/character_classifying_cnn/outputs/class_Grant.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/character_classifying_cnn/outputs/class_Monica.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/character_classifying_cnn/outputs/classification.7z" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clustering_with_AE/auto_encoder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clustering_with_AE/dataset.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clustering_with_AE/extract_images.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clustering_with_AE/feature_extraction.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clustering_with_AE/models/model_1.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/character_classifying_cnn/Simple_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/character_classifying_cnn/Simple_cnn.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OCR/module.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/japanese-handwriting-analysis.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/japanese-handwriting-analysis.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OCR/.ipynb_checkpoints/jap_ocr-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/OCR/.ipynb_checkpoints/jap_ocr-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OCR/RenameOCR.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/OCR/RenameOCR.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OCR/common_character_clustering.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/OCR/common_character_clustering.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OCR/jap_ocr.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/OCR/jap_ocr.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +55,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Merging zhishang",
+    "git-widget-placeholder": "zhishang",
     "last_opened_file_path": "/Users/yoko/PycharmProjects/japanese-handwriting-analysis/kana_kanji_classifying",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
