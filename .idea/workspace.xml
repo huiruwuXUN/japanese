@@ -5,13 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e371343-15a0-47ed-8e66-0770ebeeb9cf" name="Changes" comment="MODIFY file name, structure,add instruction on how to run the project">
-      <change afterPath="$PROJECT_DIR$/OCR/module.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/japanese-handwriting-analysis.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/japanese-handwriting-analysis.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OCR/.ipynb_checkpoints/common_character_clustering-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/OCR/.ipynb_checkpoints/common_character_clustering-checkpoint.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OCR/.ipynb_checkpoints/jap_ocr-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/OCR/.ipynb_checkpoints/jap_ocr-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OCR/RenameOCR.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/OCR/RenameOCR.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OCR/cluster/あ.csv" beforeDir="false" afterPath="$PROJECT_DIR$/OCR/cluster/あ.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OCR/cluster/お.csv" beforeDir="false" afterPath="$PROJECT_DIR$/OCR/cluster/お.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OCR/cluster/か.csv" beforeDir="false" afterPath="$PROJECT_DIR$/OCR/cluster/か.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OCR/cluster/く.csv" beforeDir="false" afterPath="$PROJECT_DIR$/OCR/cluster/く.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OCR/cluster/し.csv" beforeDir="false" afterPath="$PROJECT_DIR$/OCR/cluster/し.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OCR/cluster/す.csv" beforeDir="false" afterPath="$PROJECT_DIR$/OCR/cluster/す.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OCR/cluster/で.csv" beforeDir="false" afterPath="$PROJECT_DIR$/OCR/cluster/で.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OCR/cluster/な.csv" beforeDir="false" afterPath="$PROJECT_DIR$/OCR/cluster/な.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OCR/cluster/に.csv" beforeDir="false" afterPath="$PROJECT_DIR$/OCR/cluster/に.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OCR/cluster/の.csv" beforeDir="false" afterPath="$PROJECT_DIR$/OCR/cluster/の.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OCR/cluster/は.csv" beforeDir="false" afterPath="$PROJECT_DIR$/OCR/cluster/は.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OCR/cluster/へ.csv" beforeDir="false" afterPath="$PROJECT_DIR$/OCR/cluster/へ.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OCR/cluster/よ.csv" beforeDir="false" afterPath="$PROJECT_DIR$/OCR/cluster/よ.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OCR/cluster/る.csv" beforeDir="false" afterPath="$PROJECT_DIR$/OCR/cluster/る.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OCR/cluster/を.csv" beforeDir="false" afterPath="$PROJECT_DIR$/OCR/cluster/を.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OCR/cluster/ス.csv" beforeDir="false" afterPath="$PROJECT_DIR$/OCR/cluster/ス.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OCR/cluster/ル.csv" beforeDir="false" afterPath="$PROJECT_DIR$/OCR/cluster/ル.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OCR/common_character_clustering.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/OCR/common_character_clustering.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OCR/jap_ocr.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/OCR/jap_ocr.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OCR/module.py" beforeDir="false" afterPath="$PROJECT_DIR$/OCR/module.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OCR/pilot_data_ocr1.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/OCR/pilot_data_ocr1.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
