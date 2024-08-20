@@ -38,6 +38,7 @@ def get_prediction_json(img):
     model = project.version(5).model
     json=model.predict(img, confidence=20, overlap=30).json()
     return json
+
 def file_lookup():
     path='D:\8715_project\japanese-handwriting-analysis\pilot'
     path_list=os.listdir(path)
