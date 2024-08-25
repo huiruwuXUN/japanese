@@ -1,0 +1,4 @@
+INFORMATION REGARDING THIS SOFTWARE DOCUMENTATION FOLDER
+
+// This text file will be used to store the work we do related to our software development,
+    so it can be used as reference for present and future development//
