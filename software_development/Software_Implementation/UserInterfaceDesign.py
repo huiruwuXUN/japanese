@@ -1,14 +1,14 @@
 # -------------------------------------------------------------------------------------------------------
-# @author   Muhammad Arslan Amjad Qureshi
+# @author   Muhammad Arslan Amjad Qureshi         @Co-Author   Omair Soomro
 # @date     2024-08-25
 # @description This script creates the basic login page for Japanese Handwriting Analysis Project
-# @descriptipn2 This script is now modified to create a Main Application Page, this Main Application Page
+# @description2 This script is now modified to create a Main Application Page, this Main Application Page
 #               uploads the japanese handwriting leaflet image, is designed to process it(processing features
 #               will be added later on and then give the results regarding this image.)
 # --------------------------------------------------------------------------------------------------------
 
 import tkinter as tk
-from tkinter import ttk, filedialog
+from tkinter import ttk, filedialog, messagebox
 from PIL import Image, ImageTk  # Import PIL for image handling
 
 
@@ -59,20 +59,26 @@ def main_page():
     status_bar = tk.Label(root, text="Ready", bd=1, relief=tk.SUNKEN, anchor=tk.W)
     status_bar.pack(side=tk.BOTTOM, fill=tk.X)
 
-
-# Function to open a file dialog for image selection and display the selected image.
+# Function to open a file dialog for image selection and display the selected image
 def open_file():
-    file_path = filedialog.askopenfilename(
-        filetypes=[("Image files", "*.jpg *.jpeg *.png"), ("All files", "*.*")]  # Can take images from these File Formats.
-    )
-    if file_path:  # If a file was selected
-        print(f"File selected: {file_path}")
-        # Load the image using PIL and display it in the label
-        img = Image.open(file_path)
-        img = img.resize((300, 300), Image.ANTIALIAS)  # Resize image to fit in the display area
-        img_tk = ImageTk.PhotoImage(img)  # Convert image for Tkinter
-        image_display.config(image=img_tk)
-        image_display.image = img_tk  # Keep a reference to avoid garbage collection
+    try:
+        file_path = filedialog.askopenfilename(
+            filetypes=[("Image files", ".jpg *.jpeg *.png"), ("All files", ".*")]
+        )
+        if file_path:  # If a file was selected
+            print(f"File selected: {file_path}")
+            # Load the image using PIL
+            img = Image.open(file_path)
+            # Resize the image to fit the display area while maintaining aspect ratio
+            display_width = image_display.winfo_width()
+            display_height = image_display.winfo_height()
+            img.thumbnail((display_width, display_height), Image.ANTIALIAS)
+            img_tk = ImageTk.PhotoImage(img)
+            # Update the image in the display area
+            image_display.config(image=img_tk)
+            image_display.image = img_tk  # Keep a reference to avoid garbage collection
+    except Exception as e:
+        messagebox.showerror("Error", f"Failed to open image: {e}")  # Correct usage of messagebox
 
 
 # Initialize the main window for the application
