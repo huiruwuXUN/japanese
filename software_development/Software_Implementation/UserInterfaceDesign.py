@@ -9,6 +9,7 @@
 
 import tkinter as tk
 from tkinter import ttk, filedialog
+from PIL import Image, ImageTk  # Import PIL for image handling
 
 
 # Function to handle opening the main page after login
@@ -21,6 +22,9 @@ def open_main_page():
 
 # Function to set up and display the main application page
 def main_page():
+
+    global image_display  # Make image_display global to update it later
+
     # Create a new frame for the main application content
     main_frame = tk.Frame(root)
     main_frame.pack(fill=tk.BOTH, expand=True)
@@ -56,13 +60,19 @@ def main_page():
     status_bar.pack(side=tk.BOTTOM, fill=tk.X)
 
 
-# Function to open a file dialog for image selection
+# Function to open a file dialog for image selection and display the selected image.
 def open_file():
-    file_path = filedialog.askopenfilename(  
-        filetypes=[("Image files", "*.jpg *.jpeg *.png"), ("All files", "*.*")] # Can take images from these file formats.
+    file_path = filedialog.askopenfilename(
+        filetypes=[("Image files", "*.jpg *.jpeg *.png"), ("All files", "*.*")]  # Can take images from these File Formats.
     )
     if file_path:  # If a file was selected
         print(f"File selected: {file_path}")
+        # Load the image using PIL and display it in the label
+        img = Image.open(file_path)
+        img = img.resize((300, 300), Image.ANTIALIAS)  # Resize image to fit in the display area
+        img_tk = ImageTk.PhotoImage(img)  # Convert image for Tkinter
+        image_display.config(image=img_tk)
+        image_display.image = img_tk  # Keep a reference to avoid garbage collection
 
 
 # Initialize the main window for the application
@@ -87,7 +97,7 @@ password_label.pack(pady=5)
 password_entry = tk.Entry(login_frame, show="*")
 password_entry.pack(pady=5)
 
-login_button = tk.Button(login_frame, text="Login", command=open_main_page)  
+login_button = tk.Button(login_frame, text="Login", command=open_main_page)
 login_button.pack(pady=20)
 
 root.mainloop()
