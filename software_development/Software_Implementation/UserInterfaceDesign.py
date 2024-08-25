@@ -46,6 +46,11 @@ def main_page():
     right_frame.pack(side=tk.RIGHT, fill=tk.Y)
     process_button = tk.Button(right_frame, text="Process Image")
     process_button.pack(pady=10)
+
+    # Reset button added
+    reset_button = tk.Button(right_frame, text="Reset Image", command=reset_image)  # Reset button
+    reset_button.pack(pady=10)
+
     options_frame = tk.LabelFrame(right_frame, text="Options")
     options_frame.pack(fill=tk.BOTH, expand=True)
     option1 = tk.Checkbutton(options_frame, text="Preprocessing")
@@ -80,7 +85,12 @@ def open_file():
     except Exception as e:
         messagebox.showerror("Error", f"Failed to open image: {e}")  # Correct usage of messagebox
 
-
+# Function to reset the image display area
+def reset_image():
+    global current_image
+    current_image = None  # Reset the current image
+    image_display.config(image='', text="Image Display Area")  # Clear the display area
+    
 # Initialize the main window for the application
 root = tk.Tk() 
 root.title("Japanese Handwriting Analysis Tool")
