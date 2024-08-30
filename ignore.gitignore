@@ -1,0 +1,20 @@
+# Ignore IntelliJ IDEA project files
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Ignore PyCharm specific files
+.idea/
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.PyCharmCE*
+
+# Ignore VS Code specific files
+.vscode/
+*.code-workspace
+
+# Ignore MacOS specific files
+.DS_Store
