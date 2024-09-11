@@ -1,18 +1,19 @@
 # -------------------------------------------------------------------------------------------------------
-# @author   Muhammad Arslan Amjad Qureshi         @Co-Author   Omair Soomro
-# @date     2024-08-25
-# @description This script creates the basic login page for Japanese Handwriting Analysis Project
-# @description2 This script is now modified to create a Main Application Page, this Main Application Page
-#               uploads the japanese handwriting leaflet image, is designed to process it(processing features
-#               will be added later on and then give the results regarding this image.
+# @author   
+#     Muhammad Arslan Amjad Qureshi         @Co-Author   Omair Soomro
+# @date     
+#     2024-08-25
+# @description 
+#     This script creates the basic login page for Japanese Handwriting Analysis Project
+#     It has been modified to create a Main Application Page, allowing users to upload Japanese handwriting
+#     images, process them (processing features to be added later), and display results.
 # --------------------------------------------------------------------------------------------------------
 
 import tkinter as tk
-from tkinter import Image, messagebox, simpledialog
+from tkinter import messagebox, simpledialog, filedialog
 import sqlite3
-from tkinter import filedialog
-from tkinter.tix import IMAGETEXT
 import bcrypt
+from PIL import Image, ImageTk  # Correct import for image handling
 
 # Initialize SQLite connection
 conn = sqlite3.connect('users.db')
@@ -49,8 +50,8 @@ def authenticate(username, password):
     c.execute("SELECT password FROM users WHERE username = ?", (username,))
     result = c.fetchone()
     if result:
-        hashed_password = result[0]  # hashed_password is already in bytes format from database
-        if check_password(password, hashed_password):  # No need to encode the hashed_password
+        hashed_password = result[0]
+        if check_password(password, hashed_password):
             return True
     return False
 
@@ -65,17 +66,48 @@ def login():
     else:
         messagebox.showerror("Login Failed", "Invalid username or password")
 
-# Function to open the registration window
+# Function to open the registration window with improved validation
 def register():
-    username = simpledialog.askstring("Register", "Enter a new username:")
-    password = simpledialog.askstring("Register", "Enter a new password:", show='*')
-    
-    if username and password:
+    while True:  # Loop until valid inputs are provided or Cancel is pressed
+        username = simpledialog.askstring("Register", "Enter a new username:")
+        
+        # If the user presses Cancel (username is None), break the loop
+        if username is None:
+            break
+        
+        # Check if username is empty
+        if not username:
+            messagebox.showerror("Error", "Username field cannot be empty.")
+            continue  # Continue prompting until valid username is entered
+        
+        # Check if the username already exists in the database
+        c.execute("SELECT * FROM users WHERE username = ?", (username,))
+        if c.fetchone() is not None:
+            messagebox.showerror("Error", "Username already exists. Please choose a different username.")
+            continue  # Continue prompting until a unique username is entered
+        
+        password = simpledialog.askstring("Register", "Enter a new password:", show='*')
+        
+        # If the user presses Cancel (password is None), break the loop
+        if password is None:
+            break
+        
+        # Check if password is empty
+        if not password:
+            messagebox.showerror("Error", "Password field cannot be empty.")
+            continue  # Continue prompting until valid password is entered
+        
+        # If both fields are valid and username is unique, register the user and break the loop
         register_user(username, password)
+        break
 
 # Function to open the forgot password window
 def forgot_password():
     username = simpledialog.askstring("Forgot Password", "Enter your username:")
+    
+    # If user presses Cancel, exit the forgot password process
+    if username is None:
+        return
     
     # Check if the user exists
     c.execute("SELECT * FROM users WHERE username = ?", (username,))
@@ -83,12 +115,23 @@ def forgot_password():
     
     if result:
         # Prompt for a new password
-        new_password = simpledialog.askstring("Forgot Password", "Enter a new password:", show='*')
-        if new_password:
+        while True:
+            new_password = simpledialog.askstring("Forgot Password", "Enter a new password:", show='*')
+            
+            # If user presses Cancel, exit the forgot password process
+            if new_password is None:
+                return
+            
+            # Check if new password is empty or only whitespace
+            if not new_password.strip():
+                messagebox.showerror("Error", "Password field cannot be empty.")
+                continue  # Prompt again for new password
+            
             # Hash and update the new password in the database
             c.execute("UPDATE users SET password = ? WHERE username = ?", (hash_password(new_password), username))
             conn.commit()
             messagebox.showinfo("Password Reset", "Password reset successfully!")
+            break
     else:
         messagebox.showerror("Error", "Username does not exist!")
 
@@ -140,13 +183,18 @@ def main_page():
 
 # Function to open a file dialog for image selection
 def open_file():
-    file_path = filedialog.askopenfilename(filetypes=[("Image files", ".jpg *.jpeg *.png"), ("All files", ".*")])
+    file_path = filedialog.askopenfilename(
+        filetypes=[("Image files", "*.jpg *.jpeg *.png"), ("All files", "*.*")]
+    )
     if file_path:
-        img = Image.open(file_path)
-        img.thumbnail((image_display.winfo_width(), image_display.winfo_height()), Image.ANTIALIAS)
-        img_tk = IMAGETEXT.PhotoImage(img)
-        image_display.config(image=img_tk)
-        image_display.image = img_tk
+        try:
+            img = Image.open(file_path)
+            img.thumbnail((image_display.winfo_width(), image_display.winfo_height()), Image.ANTIALIAS)
+            img_tk = ImageTk.PhotoImage(img)
+            image_display.config(image=img_tk, text="")
+            image_display.image = img_tk  # Keep a reference to prevent garbage collection
+        except Exception as e:
+            messagebox.showerror("Error", f"Failed to open image:\n{e}")
 
 # Function to reset the image display area
 def reset_image():
