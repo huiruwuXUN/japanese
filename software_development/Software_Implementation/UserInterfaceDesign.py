@@ -9,8 +9,9 @@
 #     images, process them (processing features to be added later), and display results.
 # --------------------------------------------------------------------------------------------------------
 
+# Initialize SQLite connection
 import tkinter as tk
-from tkinter import messagebox, simpledialog, filedialog, ttk
+from tkinter import ttk, messagebox, filedialog, simpledialog, Text
 import sqlite3
 import bcrypt
 from PIL import Image, ImageTk
@@ -188,55 +189,104 @@ def open_file():
 def reset_image():
     image_display.config(image='', text="Image Display Area")
 
-# Function to display help and documentation
+# Function to display help and documentation with images and a search feature
 def show_help():
     help_window = tk.Toplevel(root)
     help_window.title("Help & Documentation")
-    help_window.geometry("500x400")
+    help_window.geometry("600x500")
     
-    # Create a notebook (tabbed view)
+    # Search bar to search within help content
+    search_frame = tk.Frame(help_window)
+    search_frame.pack(fill=tk.X, padx=10, pady=10)
+
+    search_label = tk.Label(search_frame, text="Search:")
+    search_label.pack(side=tk.LEFT)
+    
+    search_entry = tk.Entry(search_frame)
+    search_entry.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=5)
+
+    search_button = tk.Button(search_frame, text="Go", command=lambda: search_help_content(search_entry.get()))
+    search_button.pack(side=tk.LEFT)
+
+    # Notebook (tabbed view)
     notebook = ttk.Notebook(help_window)
     notebook.pack(expand=True, fill='both')
     
     # Create Overview Tab
     overview_tab = tk.Frame(notebook)
     notebook.add(overview_tab, text="Overview")
-    overview_label = tk.Label(overview_tab, text="This application allows users to upload Japanese handwriting images...", wraplength=480)
-    overview_label.pack(padx=10, pady=10)
-    
-    # Create How to Use Tab
+    overview_text = Text(overview_tab, wrap='word')
+    overview_text.pack(fill=tk.BOTH, expand=True)
+    overview_text.insert(tk.END, "Welcome to the Japanese Handwriting Analysis Tool.\n\n")
+    overview_text.insert(tk.END, "This tool allows you to upload, process, and analyze handwriting images.")
+    overview_text.config(state=tk.DISABLED)
+
+    # Create How to Use Tab with an image
     howto_tab = tk.Frame(notebook)
     notebook.add(howto_tab, text="How to Use")
-    howto_label = tk.Label(howto_tab, text="1. Click on 'Upload Image' to select an image file.\n2. Use 'Process Image' to process the handwriting...", wraplength=480)
-    howto_label.pack(padx=10, pady=10)
+    howto_text = Text(howto_tab, wrap='word')
+    howto_text.pack(fill=tk.BOTH, expand=True)
     
+    # Embedding an image to show steps
+    img_path = "path_to_instruction_image.png"
+    try:
+        instruction_image = Image.open(img_path)
+        instruction_image.thumbnail((300, 300))
+        img_tk = ImageTk.PhotoImage(instruction_image)
+        howto_text.image_create(tk.END, image=img_tk)
+        howto_text.insert(tk.END, "\n1. Click 'Upload Image' to choose an image file.\n")
+        howto_text.insert(tk.END, "2. Click 'Process Image' to analyze it.\n")
+        howto_text.insert(tk.END, "3. Reset or Save the results as needed.\n")
+    except Exception as e:
+        howto_text.insert(tk.END, f"Failed to load instruction image: {e}")
+    howto_text.config(state=tk.DISABLED)
+
     # Create FAQ Tab
     faq_tab = tk.Frame(notebook)
     notebook.add(faq_tab, text="FAQ")
-    faq_label = tk.Label(faq_tab, text="Q1: What image formats are supported?\nA: The application supports JPEG, PNG formats...", wraplength=480)
-    faq_label.pack(padx=10, pady=10)
-    
-    # Create About Tab
+    faq_text = Text(faq_tab, wrap='word')
+    faq_text.pack(fill=tk.BOTH, expand=True)
+    faq_text.insert(tk.END, "Q: What image formats are supported?\n")
+    faq_text.insert(tk.END, "A: JPEG, PNG formats are supported.\n\n")
+    faq_text.insert(tk.END, "Q: Can I reset my password?\n")
+    faq_text.insert(tk.END, "A: Yes, go to 'Forgot Password' on the login screen.\n\n")
+    faq_text.config(state=tk.DISABLED)
+
+    # Create About Tab with links and credits
     about_tab = tk.Frame(notebook)
     notebook.add(about_tab, text="About")
-    about_label = tk.Label(about_tab, text="Developed by Muhammad Arslan Amjad Qureshi & Omair Soomro", wraplength=480)
-    about_label.pack(padx=10, pady=10)
+    about_text = Text(about_tab, wrap='word')
+    about_text.pack(fill=tk.BOTH, expand=True)
+    about_text.insert(tk.END, "Developed by:\n")
+    about_text.insert(tk.END, "Muhammad Arslan Amjad Qureshi\n")
+    about_text.insert(tk.END, "Omair Soomro\n\n")
+    about_text.insert(tk.END, "For more information, visit our [website](https://example.com)")
+    about_text.config(state=tk.DISABLED)
 
-# Add a Help Menu to the existing main page
+# Function to handle search within help
+def search_help_content(query):
+    # Add a function that can search content in the help tabs and highlight the matching results
+    pass
+
+# Function to add the Help menu to the main application
 def add_help_menu(menu_bar):
     help_menu = tk.Menu(menu_bar, tearoff=0)
     help_menu.add_command(label="Help & Documentation", command=show_help)
     help_menu.add_separator()
     help_menu.add_command(label="About", command=lambda: messagebox.showinfo("About", "Developed by Muhammad Arslan Amjad Qureshi & Omair Soomro"))
     
-    # Add the Help menu to the main menu bar
     menu_bar.add_cascade(label="Help", menu=help_menu)
 
-# Initialize the main window
+# Main application window
 root = tk.Tk()
 root.title("Japanese Handwriting Analysis Tool")
 root.geometry("800x600")
 
+menu_bar = tk.Menu(root)
+root.config(menu=menu_bar)
+add_help_menu(menu_bar)
+
+# Create login window
 login_frame = tk.Frame(root)
 login_frame.pack(fill=tk.BOTH, expand=True)
 
@@ -265,11 +315,9 @@ forgot_password_button.pack(pady=10)
 # Bind Enter key to login
 root.bind('<Return>', lambda event: login())
 
-# Create a menu bar
-menu_bar = tk.Menu(root)
-root.config(menu=menu_bar)
-
-# Call the function to add help menu
-add_help_menu(menu_bar)
-
 root.mainloop()
+
+
+
+
+
