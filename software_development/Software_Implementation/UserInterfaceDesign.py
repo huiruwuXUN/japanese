@@ -10,10 +10,10 @@
 # --------------------------------------------------------------------------------------------------------
 
 import tkinter as tk
-from tkinter import messagebox, simpledialog, filedialog
+from tkinter import messagebox, simpledialog, filedialog, ttk
 import sqlite3
 import bcrypt
-from PIL import Image, ImageTk  # Correct import for image handling
+from PIL import Image, ImageTk
 
 # Initialize SQLite connection
 conn = sqlite3.connect('users.db')
@@ -68,36 +68,30 @@ def login():
 
 # Function to open the registration window with improved validation
 def register():
-    while True:  # Loop until valid inputs are provided or Cancel is pressed
+    while True:
         username = simpledialog.askstring("Register", "Enter a new username:")
         
-        # If the user presses Cancel (username is None), break the loop
         if username is None:
             break
         
-        # Check if username is empty
         if not username:
             messagebox.showerror("Error", "Username field cannot be empty.")
-            continue  # Continue prompting until valid username is entered
+            continue
         
-        # Check if the username already exists in the database
         c.execute("SELECT * FROM users WHERE username = ?", (username,))
         if c.fetchone() is not None:
             messagebox.showerror("Error", "Username already exists. Please choose a different username.")
-            continue  # Continue prompting until a unique username is entered
+            continue
         
         password = simpledialog.askstring("Register", "Enter a new password:", show='*')
         
-        # If the user presses Cancel (password is None), break the loop
         if password is None:
             break
         
-        # Check if password is empty
         if not password:
             messagebox.showerror("Error", "Password field cannot be empty.")
-            continue  # Continue prompting until valid password is entered
+            continue
         
-        # If both fields are valid and username is unique, register the user and break the loop
         register_user(username, password)
         break
 
@@ -105,29 +99,23 @@ def register():
 def forgot_password():
     username = simpledialog.askstring("Forgot Password", "Enter your username:")
     
-    # If user presses Cancel, exit the forgot password process
     if username is None:
         return
     
-    # Check if the user exists
     c.execute("SELECT * FROM users WHERE username = ?", (username,))
     result = c.fetchone()
     
     if result:
-        # Prompt for a new password
         while True:
             new_password = simpledialog.askstring("Forgot Password", "Enter a new password:", show='*')
             
-            # If user presses Cancel, exit the forgot password process
             if new_password is None:
                 return
             
-            # Check if new password is empty or only whitespace
             if not new_password.strip():
                 messagebox.showerror("Error", "Password field cannot be empty.")
-                continue  # Prompt again for new password
+                continue
             
-            # Hash and update the new password in the database
             c.execute("UPDATE users SET password = ? WHERE username = ?", (hash_password(new_password), username))
             conn.commit()
             messagebox.showinfo("Password Reset", "Password reset successfully!")
@@ -200,6 +188,50 @@ def open_file():
 def reset_image():
     image_display.config(image='', text="Image Display Area")
 
+# Function to display help and documentation
+def show_help():
+    help_window = tk.Toplevel(root)
+    help_window.title("Help & Documentation")
+    help_window.geometry("500x400")
+    
+    # Create a notebook (tabbed view)
+    notebook = ttk.Notebook(help_window)
+    notebook.pack(expand=True, fill='both')
+    
+    # Create Overview Tab
+    overview_tab = tk.Frame(notebook)
+    notebook.add(overview_tab, text="Overview")
+    overview_label = tk.Label(overview_tab, text="This application allows users to upload Japanese handwriting images...", wraplength=480)
+    overview_label.pack(padx=10, pady=10)
+    
+    # Create How to Use Tab
+    howto_tab = tk.Frame(notebook)
+    notebook.add(howto_tab, text="How to Use")
+    howto_label = tk.Label(howto_tab, text="1. Click on 'Upload Image' to select an image file.\n2. Use 'Process Image' to process the handwriting...", wraplength=480)
+    howto_label.pack(padx=10, pady=10)
+    
+    # Create FAQ Tab
+    faq_tab = tk.Frame(notebook)
+    notebook.add(faq_tab, text="FAQ")
+    faq_label = tk.Label(faq_tab, text="Q1: What image formats are supported?\nA: The application supports JPEG, PNG formats...", wraplength=480)
+    faq_label.pack(padx=10, pady=10)
+    
+    # Create About Tab
+    about_tab = tk.Frame(notebook)
+    notebook.add(about_tab, text="About")
+    about_label = tk.Label(about_tab, text="Developed by Muhammad Arslan Amjad Qureshi & Omair Soomro", wraplength=480)
+    about_label.pack(padx=10, pady=10)
+
+# Add a Help Menu to the existing main page
+def add_help_menu(menu_bar):
+    help_menu = tk.Menu(menu_bar, tearoff=0)
+    help_menu.add_command(label="Help & Documentation", command=show_help)
+    help_menu.add_separator()
+    help_menu.add_command(label="About", command=lambda: messagebox.showinfo("About", "Developed by Muhammad Arslan Amjad Qureshi & Omair Soomro"))
+    
+    # Add the Help menu to the main menu bar
+    menu_bar.add_cascade(label="Help", menu=help_menu)
+
 # Initialize the main window
 root = tk.Tk()
 root.title("Japanese Handwriting Analysis Tool")
@@ -232,5 +264,12 @@ forgot_password_button.pack(pady=10)
 
 # Bind Enter key to login
 root.bind('<Return>', lambda event: login())
+
+# Create a menu bar
+menu_bar = tk.Menu(root)
+root.config(menu=menu_bar)
+
+# Call the function to add help menu
+add_help_menu(menu_bar)
 
 root.mainloop()
