@@ -17,43 +17,83 @@ def show_help():
     """
     messagebox.showinfo("Help & Documentation", help_text)
 
+def show_about():
+    about_text = """
+    Japanese Handwriting Analysis Tool
+    
+    Version: 1.0
+    Developed by: Muhammad Arslan Amjad Qureshi, Omair Soomro
+    Date: 2024-08-25
+
+    This application is developed for analyzing Japanese handwriting from WWII-era leaflets. 
+    It provides tools for image upload, preprocessing, feature extraction, and clustering.
+    """
+    messagebox.showinfo("About", about_text)
+
+def show_code_references():
+    code_ref_text = """
+    Code References:
+    
+    1. Bcrypt Library: Used for secure password hashing.
+    2. Tkinter Library: Used for the graphical user interface.
+    3. PIL (Pillow): Used for image processing and display.
+    4. SQLite: Database used for user registration and authentication.
+    
+    For more detailed references, please visit the project's repository.
+    """
+    messagebox.showinfo("Code References", code_ref_text)
+
 def open_main_page():
     root = tk.Tk()
     root.title("Japanese Handwriting Analysis Tool - Main Page")
     root.geometry("800x600")
 
+    # Create Menu Bar
+    menubar = tk.Menu(root)
+
+    # Add File Menu
+    file_menu = tk.Menu(menubar, tearoff=0)
+    file_menu.add_command(label="Exit", command=root.quit)
+    menubar.add_cascade(label="File", menu=file_menu)
+
+    # Add Help Menu
+    help_menu = tk.Menu(menubar, tearoff=0)
+    help_menu.add_command(label="Help", command=show_help)
+    help_menu.add_command(label="About", command=show_about)
+    help_menu.add_command(label="Code References", command=show_code_references)
+    menubar.add_cascade(label="Help", menu=help_menu)
+
+    # Configure menu
+    root.config(menu=menubar)
+
     main_frame = tk.Frame(root)
     main_frame.pack(fill=tk.BOTH, expand=True)
 
-    # Add Help Button to the Main Page
-    help_button = tk.Button(root, text="Help", command=show_help)
-    help_button.pack(side=tk.TOP, pady=5)
-
     left_frame = tk.Frame(main_frame, width=200)
     left_frame.pack(side=tk.LEFT, fill=tk.Y)
-    
+
     upload_button = tk.Button(left_frame, text="Upload Image", command=lambda: open_file(image_display))
     upload_button.pack(pady=10)
-    
+
     image_listbox = tk.Listbox(left_frame)
     image_listbox.pack(fill=tk.BOTH, expand=True)
-    
+
     global image_display
     image_display = tk.Label(main_frame, text="Image Display Area", bg="grey")
     image_display.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
-    
+
     right_frame = tk.Frame(main_frame, width=200)
     right_frame.pack(side=tk.RIGHT, fill=tk.Y)
-    
+
     process_button = tk.Button(right_frame, text="Process Image")
     process_button.pack(pady=10)
-    
+
     reset_button = tk.Button(right_frame, text="Reset Image", command=lambda: reset_image(image_display))
     reset_button.pack(pady=10)
 
     options_frame = tk.LabelFrame(right_frame, text="Options")
     options_frame.pack(fill=tk.BOTH, expand=True)
-    
+
     option1 = tk.Checkbutton(options_frame, text="Preprocessing")
     option1.pack(anchor='w')
     option2 = tk.Checkbutton(options_frame, text="Feature Extraction")

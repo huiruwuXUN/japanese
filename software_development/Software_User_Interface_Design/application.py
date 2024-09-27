@@ -1,17 +1,23 @@
 import tkinter as tk
 from login_page import login, register, forgot_password
-from main_page import open_main_page, show_help
+from main_page import open_main_page, show_help, show_about, show_code_references
 
 def start_login_page():
     root = tk.Tk()
     root.title("Japanese Handwriting Analysis Tool - Login")
     root.geometry("400x300")
 
-    # Add Help Menu in the login page
+    # Add Menu Bar in Login Page
     menubar = tk.Menu(root)
+
+    # Add Help Menu in the login page
     help_menu = tk.Menu(menubar, tearoff=0)
     help_menu.add_command(label="Help", command=show_help)
+    help_menu.add_command(label="About", command=show_about)
+    help_menu.add_command(label="Code References", command=show_code_references)
     menubar.add_cascade(label="Help", menu=help_menu)
+
+    # Configure menu
     root.config(menu=menubar)
 
     login_frame = tk.Frame(root)
