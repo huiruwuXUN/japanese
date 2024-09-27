@@ -1,22 +1,18 @@
-# -------------------------------------------------------------------------------------------------------
-# @author   
-#     Muhammad Arslan Amjad Qureshi         @Co-Author   Omair Soomro
-# @date     
-#     2024-08-25
-# @description 
-#     This script creates the basic login page for Japanese Handwriting Analysis Project
-#     It has been modified to create a Main Application Page, allowing users to upload Japanese handwriting
-#     images, process them (processing features to be added later), and display results.
-# --------------------------------------------------------------------------------------------------------
-
 import tkinter as tk
 from login_page import login, register, forgot_password
-from main_page import open_main_page
+from main_page import open_main_page, show_help
 
 def start_login_page():
     root = tk.Tk()
     root.title("Japanese Handwriting Analysis Tool - Login")
     root.geometry("400x300")
+
+    # Add Help Menu in the login page
+    menubar = tk.Menu(root)
+    help_menu = tk.Menu(menubar, tearoff=0)
+    help_menu.add_command(label="Help", command=show_help)
+    menubar.add_cascade(label="Help", menu=help_menu)
+    root.config(menu=menubar)
 
     login_frame = tk.Frame(root)
     login_frame.pack(fill=tk.BOTH, expand=True)

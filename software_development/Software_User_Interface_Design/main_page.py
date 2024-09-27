@@ -2,6 +2,21 @@ import tkinter as tk
 from tkinter import filedialog, messagebox
 from PIL import Image, ImageTk
 
+def show_help():
+    help_text = """
+    Japanese Handwriting Analysis Tool - Help Documentation
+    
+    1. Upload Image: Allows you to upload an image of Japanese handwriting.
+    2. Process Image: This option will process the uploaded image (features to be added later).
+    3. Reset Image: Resets the currently uploaded image.
+    4. Preprocessing: Prepares the image for further analysis.
+    5. Feature Extraction: Extracts key features from the handwriting for analysis.
+    6. Clustering: Groups similar features from the handwriting images.
+
+    For code documentation, please visit the project's repository or the codebase for more details.
+    """
+    messagebox.showinfo("Help & Documentation", help_text)
+
 def open_main_page():
     root = tk.Tk()
     root.title("Japanese Handwriting Analysis Tool - Main Page")
@@ -9,6 +24,10 @@ def open_main_page():
 
     main_frame = tk.Frame(root)
     main_frame.pack(fill=tk.BOTH, expand=True)
+
+    # Add Help Button to the Main Page
+    help_button = tk.Button(root, text="Help", command=show_help)
+    help_button.pack(side=tk.TOP, pady=5)
 
     left_frame = tk.Frame(main_frame, width=200)
     left_frame.pack(side=tk.LEFT, fill=tk.Y)
