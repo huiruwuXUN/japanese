@@ -1,14 +1,19 @@
+import os
 import tkinter as tk
 from tkinter import filedialog, messagebox
 from PIL import Image, ImageTk
+
+# Global variable to store list of images and current image index
+image_list = []
+current_image_index = 0
 
 def show_help():
     help_text = """
     Japanese Handwriting Analysis Tool - Help Documentation
     
-    1. Upload Image: Allows you to upload an image of Japanese handwriting.
-    2. Process Image: This option will process the uploaded image (features to be added later).
-    3. Reset Image: Resets the currently uploaded image.
+    1. Upload Folder: Allows you to upload a folder of images of Japanese handwriting.
+    2. Process Image: This option will process the currently displayed image (features to be added later).
+    3. Reset Image: Resets the currently displayed image.
     4. Preprocessing: Prepares the image for further analysis.
     5. Feature Extraction: Extracts key features from the handwriting for analysis.
     6. Clustering: Groups similar features from the handwriting images.
@@ -72,7 +77,7 @@ def open_main_page():
     left_frame = tk.Frame(main_frame, width=200)
     left_frame.pack(side=tk.LEFT, fill=tk.Y)
 
-    upload_button = tk.Button(left_frame, text="Upload Image", command=lambda: open_file(image_display))
+    upload_button = tk.Button(left_frame, text="Upload Folder", command=lambda: open_folder(image_display))
     upload_button.pack(pady=10)
 
     image_listbox = tk.Listbox(left_frame)
@@ -91,6 +96,12 @@ def open_main_page():
     reset_button = tk.Button(right_frame, text="Reset Image", command=lambda: reset_image(image_display))
     reset_button.pack(pady=10)
 
+    next_button = tk.Button(right_frame, text="Next Image", command=lambda: next_image(image_display))
+    next_button.pack(pady=10)
+
+    prev_button = tk.Button(right_frame, text="Previous Image", command=lambda: previous_image(image_display))
+    prev_button.pack(pady=10)
+
     options_frame = tk.LabelFrame(right_frame, text="Options")
     options_frame.pack(fill=tk.BOTH, expand=True)
 
@@ -106,19 +117,36 @@ def open_main_page():
 
     root.mainloop()
 
-def open_file(image_display):
-    file_path = filedialog.askopenfilename(
-        filetypes=[("Image files", "*.jpg *.jpeg *.png"), ("All files", "*.*")]
-    )
-    if file_path:
-        try:
-            img = Image.open(file_path)
-            img.thumbnail((image_display.winfo_width(), image_display.winfo_height()), Image.ANTIALIAS)
-            img_tk = ImageTk.PhotoImage(img)
-            image_display.config(image=img_tk, text="")
-            image_display.image = img_tk  # Keep a reference to prevent garbage collection
-        except Exception as e:
-            messagebox.showerror("Error", f"Failed to open image:\n{e}")
+def open_folder(image_display):
+    folder_path = filedialog.askdirectory()
+    if folder_path:
+        global image_list, current_image_index
+        image_list = [os.path.join(folder_path, f) for f in os.listdir(folder_path) if f.endswith(('jpg', 'jpeg', 'png'))]
+        current_image_index = 0
+        if image_list:
+            display_image(image_display, image_list[current_image_index])
+
+def display_image(image_display, image_path):
+    try:
+        img = Image.open(image_path)
+        img.thumbnail((image_display.winfo_width(), image_display.winfo_height()), Image.ANTIALIAS)
+        img_tk = ImageTk.PhotoImage(img)
+        image_display.config(image=img_tk, text="")
+        image_display.image = img_tk  # Keep a reference to prevent garbage collection
+    except Exception as e:
+        messagebox.showerror("Error", f"Failed to open image:\n{e}")
 
 def reset_image(image_display):
     image_display.config(image='', text="Image Display Area")
+
+def next_image(image_display):
+    global current_image_index
+    if current_image_index < len(image_list) - 1:
+        current_image_index += 1
+        display_image(image_display, image_list[current_image_index])
+
+def previous_image(image_display):
+    global current_image_index
+    if current_image_index > 0:
+        current_image_index -= 1
+        display_image(image_display, image_list[current_image_index])
