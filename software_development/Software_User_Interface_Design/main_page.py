@@ -12,11 +12,12 @@ def show_help():
     Japanese Handwriting Analysis Tool - Help Documentation
     
     1. Upload Folder: Allows you to upload a folder of images of Japanese handwriting.
-    2. Process Image: This option will process the currently displayed image (features to be added later).
-    3. Reset Image: Resets the currently displayed image.
-    4. Preprocessing: Prepares the image for further analysis.
-    5. Feature Extraction: Extracts key features from the handwriting for analysis.
-    6. Clustering: Groups similar features from the handwriting images.
+    2. Upload Single Image: Allows you to upload a single image (PNG or JPG).
+    3. Process Image: This option will process the currently displayed image (features to be added later).
+    4. Reset Image: Resets the currently displayed image.
+    5. Preprocessing: Prepares the image for further analysis.
+    6. Feature Extraction: Extracts key features from the handwriting for analysis.
+    7. Clustering: Groups similar features from the handwriting images.
 
     For code documentation, please visit the project's repository or the codebase for more details.
     """
@@ -77,8 +78,11 @@ def open_main_page():
     left_frame = tk.Frame(main_frame, width=200)
     left_frame.pack(side=tk.LEFT, fill=tk.Y)
 
-    upload_button = tk.Button(left_frame, text="Upload Folder", command=lambda: open_folder(image_display))
-    upload_button.pack(pady=10)
+    upload_folder_button = tk.Button(left_frame, text="Upload Folder", command=lambda: open_folder(image_display))
+    upload_folder_button.pack(pady=10)
+
+    upload_image_button = tk.Button(left_frame, text="Upload Single Image", command=lambda: open_single_image(image_display))
+    upload_image_button.pack(pady=10)
 
     image_listbox = tk.Listbox(left_frame)
     image_listbox.pack(fill=tk.BOTH, expand=True)
@@ -117,6 +121,7 @@ def open_main_page():
 
     root.mainloop()
 
+# Function to open a folder and load all images inside
 def open_folder(image_display):
     folder_path = filedialog.askdirectory()
     if folder_path:
@@ -126,6 +131,16 @@ def open_folder(image_display):
         if image_list:
             display_image(image_display, image_list[current_image_index])
 
+# Function to open a single image
+def open_single_image(image_display):
+    file_path = filedialog.askopenfilename(filetypes=[("Image files", "*.jpg *.jpeg *.png"), ("All files", "*.*")])
+    if file_path:
+        global image_list, current_image_index
+        image_list = [file_path]  # Treat single image as a list with one item
+        current_image_index = 0
+        display_image(image_display, image_list[current_image_index])
+
+# Function to display an image on the image_display label
 def display_image(image_display, image_path):
     try:
         img = Image.open(image_path)
@@ -136,15 +151,18 @@ def display_image(image_display, image_path):
     except Exception as e:
         messagebox.showerror("Error", f"Failed to open image:\n{e}")
 
+# Function to reset the image display area
 def reset_image(image_display):
     image_display.config(image='', text="Image Display Area")
 
+# Function to show the next image in the folder
 def next_image(image_display):
     global current_image_index
     if current_image_index < len(image_list) - 1:
         current_image_index += 1
         display_image(image_display, image_list[current_image_index])
 
+# Function to show the previous image in the folder
 def previous_image(image_display):
     global current_image_index
     if current_image_index > 0:
