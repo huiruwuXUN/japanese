@@ -82,7 +82,7 @@ if __name__ == "__main__":
     start_login_page()  # Call the function to launch the login page
 
 
-####################### Future Work we can implement Further ###########################
+####################### Future Work We can Implement Further For Branch 3 ###########################
 # To enhance and expand the functionality of your Japanese Handwriting Analysis Tool,
 # you could consider adding the following features and additional pages in the future:
 
