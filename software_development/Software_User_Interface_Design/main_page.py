@@ -4,11 +4,12 @@
 # @date
 #    01-10-2024
 # @description
-#    This script provides a graphical user interface (GUI) for analyzing Japanese handwriting 
-#    from WWII leaflets. It enables users to upload images or folders of images for further analysis, 
-#    including options for preprocessing, feature extraction, and clustering. The GUI also offers 
-#    help, about, and code reference documentation. The image display area allows users to view, 
-#    reset, and navigate through images.
+#    This script handles the main page for the Japanese Handwriting Analysis Tool. 
+#    It allows users to upload images or folders of images, and provides functionality 
+#    for viewing, navigating, resetting, and processing the images. The main page includes 
+#    options such as preprocessing, feature extraction, and clustering for image analysis, 
+#    along with help and code reference menus. It is designed for analyzing Japanese 
+#    handwriting from WWII-era leaflets using Tkinter as the GUI framework.
 # -------------------------------------------------------------------------------
 
 import os
