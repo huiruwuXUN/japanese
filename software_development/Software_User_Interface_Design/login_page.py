@@ -36,7 +36,7 @@ def check_password(password, hashed):
     """
     return bcrypt.checkpw(password.encode('utf-8'), hashed)
 
-# Function to register a new user
+# Function to register a new user in the SQLite database
 def register_user(username, password):
     """
     Registers a new user by saving their username and hashed password into the database.
