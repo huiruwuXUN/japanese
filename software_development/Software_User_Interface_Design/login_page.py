@@ -36,7 +36,7 @@ def check_password(password, hashed):
     """
     return bcrypt.checkpw(password.encode('utf-8'), hashed)
 
-# Function to register a new user
+# Function to register a new user in the SQLite database
 def register_user(username, password):
     """
     Registers a new user by saving their username and hashed password into the database.
@@ -163,3 +163,65 @@ def forgot_password():
     else:
         # Show an error if the username does not exist in the database
         messagebox.showerror("Error", "Username does not exist!")
+
+
+############################### Recommendations for the Future Work #####################################
+'''
+1. Improved User Interface (UI) Design
+
+    Responsive Layout: Make the UI responsive and visually appealing by implementing a modern, polished layout using a combination of Tkinter widgets and styles (you can use ttk widgets for a more modern look).
+    Custom Themes: Apply custom themes or styles using libraries like ttkbootstrap to give the interface a more professional appearance, with customizable fonts, colors, and buttons.
+    Form Validation: Add form validation for username and password inputs, displaying user-friendly error messages in real-time (e.g., when the password is too short or the username contains invalid characters).
+    Login Animation/Transitions: Add subtle animations or transitions (e.g., fading effects, button hover effects) to give the login interface a smoother and more engaging feel.
+
+2. Security Enhancements
+
+    Brute Force Protection: Implement a mechanism to prevent brute force attacks by limiting the number of failed login attempts. After a certain number of failed attempts, lock the account temporarily or require CAPTCHA verification.
+    CAPTCHA Integration: Add CAPTCHA to the login page to prevent bots from attempting unauthorized access.
+    Two-Factor Authentication (2FA): Add 2FA to enhance security by requiring users to provide an additional verification code sent to their email or mobile phone after entering their password.
+    Password Strength Meter: Include a password strength indicator when registering or resetting passwords to guide users in creating strong, secure passwords.
+
+3. Password Management Improvements
+
+    Password Recovery via Email: Allow users to reset their passwords via a secure email link. When users forget their password, they can request a reset link that is sent to their registered email address. This adds a more professional touch and enhances security.
+    Encrypted Password Storage: Implement more advanced password encryption algorithms and database security features to ensure that sensitive information, such as usernames and passwords, is stored securely.
+    Password Expiry: Enforce periodic password expiration, prompting users to update their passwords after a certain period (e.g., 90 days), with reminders sent via email.
+
+4. User Experience (UX) Enhancements
+
+    Remember Me Feature: Add a "Remember Me" checkbox that allows users to stay logged in on their device until they manually log out. This can be implemented using secure session management or tokens.
+    Login Feedback: Provide better feedback during login processes, such as a loading spinner or progress bar to show the system is authenticating the user.
+    Forgot Username: In addition to resetting passwords, provide an option for users to recover their forgotten username via email or phone number.
+
+5. User Account Management
+
+    Profile Management: After logging in, allow users to manage their profiles, where they can update personal information, change passwords, or review account activity (e.g., last login, recent changes).
+    Role-Based Access Control (RBAC): Introduce role-based access control, where different users (e.g., admin, regular user) have different access levels to the system’s features. This will add versatility to the login system.
+
+6. Database and Backend Enhancements
+
+    Database Schema Optimization: Consider adding more detailed user attributes to the SQLite database (e.g., email, phone number, last login time, password reset date) to improve account management and traceability.
+    Migrate to a More Scalable Database: Move from SQLite to a more scalable database like PostgreSQL or MySQL if the application needs to support a larger number of users.
+    Session Management: Implement session handling (especially useful if converting the tool into a web-based application). This will ensure that users remain logged in for a period and allow easy logout from multiple devices.
+
+7. Accessibility Features
+
+    Accessibility Compliance: Ensure the login page is accessible to all users, including those with disabilities. This can be achieved by adding keyboard navigation support, screen reader compatibility, and proper color contrast for better visibility.
+    Language Support: Add multilingual support to accommodate users from different regions by allowing the interface to switch between languages (e.g., English, Japanese).
+
+8. Integration with External Services
+
+    Social Login Options: Allow users to sign up and log in using their social media accounts (e.g., Google, Facebook, LinkedIn) to streamline the login process and improve convenience.
+    OAuth 2.0 Integration: Implement OAuth 2.0 protocol for secure and scalable login using third-party services (such as Google accounts), adding more flexibility for the login process.
+
+9. Logging and Monitoring
+
+    Login Activity Logging: Log all login attempts, both successful and failed, along with timestamps and IP addresses. This provides valuable insights for system administrators and can help detect suspicious activity.
+    Audit Trail: Keep an audit trail of user activities such as account creation, password reset, and profile changes. This improves security and accountability.
+
+10. Testing and Scalability
+
+    Unit and Integration Testing: Implement thorough testing for all login processes, including unit tests for password hashing, authentication, and edge cases (e.g., failed login attempts). This ensures reliability and robustness of the login system.
+    Scalability: Prepare the login system for scalability by considering the use of load balancing and performance optimization techniques if the tool becomes widely used.
+
+'''
