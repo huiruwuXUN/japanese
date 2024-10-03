@@ -15,49 +15,48 @@ class HandwritingDataset(Dataset):
     def __init__(self, image_dir, transform=None, num_pairs_per_writer=10):
         self.image_dir = image_dir
         self.transform = transform
-        self.num_pairs_per_writer = num_pairs_per_writer  # 每个书写者生成的正样本对数量
+        self.num_pairs_per_writer = num_pairs_per_writer 
         self.image_list = [f for f in os.listdir(image_dir) if f.endswith(('.jpg', '.png', '.jpeg'))]
-        self.image_dict = self._create_image_dict()  # 按书写者ID将图像分组
+        self.image_dict = self._create_image_dict()
 
     def _create_image_dict(self):
-        # 按照书写者ID将图像分组
+        # group images by writer ID
         image_dict = {}
         for image_file in self.image_list:
-            writer_id = image_file.split('-')[0]  # 假设文件名的格式为 "writerID_XXX.jpg"
+            writer_id = image_file.split('-')[0]  
             if writer_id not in image_dict:
                 image_dict[writer_id] = []
             image_dict[writer_id].append(image_file)
         return image_dict
 
     def __len__(self):
-        # 返回合理的长度，根据你想要的数量决定
         return len(self.image_list) * self.num_pairs_per_writer
 
     def __getitem__(self, idx):
-        # 随机选择正样本对或负样本对
-        if random.random() > 0.5:  # 50% 机会选择正样本对
+        # choose a random writer ID
+        if random.random() > 0.5:  # 50% chance to choose a positive sample
             writer_id = random.choice(list(self.image_dict.keys()))
             if len(self.image_dict[writer_id]) > 1:
-                # 随机选择同一书写者的两个样本，生成正样本对
+                # randomly choose two images from the same writer to form a positive pair
                 image1, image2 = random.sample(self.image_dict[writer_id], 2)
-                label = 1  # 正样本对
+                label = 1  # positive pair
             else:
-                return self.__getitem__(random.randint(0, len(self) - 1))  # 如果书写者样本不足，重试
-        else:  # 50% 机会选择负样本对
+                return self.__getitem__(random.randint(0, len(self) - 1))  # retry if the negative sample is not enough
+        else:  # 50% chance to choose a negative sample
             writer_id1, writer_id2 = random.sample(list(self.image_dict.keys()), 2)
             image1 = random.choice(self.image_dict[writer_id1])
             image2 = random.choice(self.image_dict[writer_id2])
-            label = 0  # 负样本对
+            label = 0  # negative pair
 
         image1 = Image.open(os.path.join(self.image_dir, image1))
         image2 = Image.open(os.path.join(self.image_dir, image2))
 
-        # 如果有transform则应用transform，否则转换为Tensor
+        # use the transform if it is provided, otherwise use the default transform
         if self.transform:
             image1 = self.transform(image1)
             image2 = self.transform(image2)
         else:
-            # 默认的Tensor转换
+            # default transform
             transform = transforms.ToTensor()
             image1 = transform(image1)
             image2 = transform(image2)
@@ -70,7 +69,6 @@ class HandwritingDataset(Dataset):
 class SiameseNetwork(nn.Module):
     def __init__(self):
         super(SiameseNetwork, self).__init__()
-        # 定义一个简单的CNN模型
         self.cnn = nn.Sequential(
             nn.Conv2d(1, 64, kernel_size=5),
             nn.ReLU(),
@@ -82,9 +80,8 @@ class SiameseNetwork(nn.Module):
             nn.ReLU(),
             nn.MaxPool2d(2)
         )
-        # 将输入维度调整为卷积层输出展平后的大小 256 * 29 * 29 = 215296
         self.fc = nn.Sequential(
-            nn.Linear(256 * 29 * 29, 512),  # 修改这里
+            nn.Linear(256 * 29 * 29, 512),
             nn.ReLU(),
             nn.Linear(512, 256),
             nn.ReLU(),
@@ -92,12 +89,12 @@ class SiameseNetwork(nn.Module):
         )
 
     def forward(self, image1, image2):
-        # 提取第一个图像的特征
+        # extract features for the first image
         output1 = self.cnn(image1)
-        output1 = output1.view(output1.size(0), -1)  # 展平成一维向量
+        output1 = output1.view(output1.size(0), -1)
         output1 = self.fc(output1)
 
-        # 提取第二个图像的特征
+        # extract features for the second image
         output2 = self.cnn(image2)
         output2 = output2.view(output2.size(0), -1)
         output2 = self.fc(output2)
@@ -111,10 +108,10 @@ class ContrastiveLoss(nn.Module):
         self.margin = margin
 
     def forward(self, output1, output2, label):
-        # 计算两个输出的欧氏距离
+        # compute the Euclidean distance between the two outputs
         euclidean_distance = nn.functional.pairwise_distance(output1, output2)
 
-        # 根据对比损失函数公式计算损失
+        # compute the contrastive loss
         loss = label * torch.pow(euclidean_distance, 2) + \
                (1 - label) * torch.pow(torch.clamp(self.margin - euclidean_distance, min=0.0), 2)
 
@@ -122,7 +119,7 @@ class ContrastiveLoss(nn.Module):
 
 def train():
     start_time = time.time()
-    # 创建数据集和数据加载器
+    # create dataset and data loader
     train_dataset = HandwritingDataset(image_dir="E:/Data/JHA/CASIA_modified/HWDB2.0Train")
     train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
     print(f'Total number of training samples: {len(train_dataset)}')
@@ -136,12 +133,12 @@ def train():
     early_stopping_patience = 3
     losses = []
 
-    # 初始化模型和损失函数
-    model = SiameseNetwork().cuda()  # 如果有GPU，请使用.cuda()
+    # initialize model, loss function, optimizer
+    model = SiameseNetwork().cuda()
     criterion = ContrastiveLoss()
     optimizer = optim.Adam(model.parameters(), lr=1e-4)
     # scaler = GradScaler()
-    # 训练循环
+    # train the model
     num_epochs = 5
     for epoch in range(num_epochs):
         model.train()
@@ -151,13 +148,10 @@ def train():
         for batch_idx, (image1, image2, label) in enumerate(train_loader):
             image1, image2, label = image1.cuda(), image2.cuda(), label.cuda()
 
-            # 前向传播
             output1, output2 = model(image1, image2)
 
-            # 计算损失
             loss = criterion(output1, output2, label)
 
-            # 反向传播和优化
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
@@ -215,7 +209,7 @@ def test():
 
     result = np.array([]).reshape(0,2)
 
-    model = SiameseNetwork().cuda()  # 如果有GPU，请使用.cuda()
+    model = SiameseNetwork().cuda()
     model.load_state_dict(torch.load('siamese_model.pth'))
     model.eval()
 
