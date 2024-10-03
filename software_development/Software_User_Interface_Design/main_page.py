@@ -204,7 +204,7 @@ def previous_image(image_display):
         display_image(image_display, image_list[current_image_index])  # Display the previous image
 
 
-############  Recommendations for the Future Work #############
+############  Recommendations for the Future Work for the Main Application Page #############
 '''
 -----> Recommendation for the Future Work or the Future Enchancements integrated into our main_page.py or software.
 1. Image Processing Features
