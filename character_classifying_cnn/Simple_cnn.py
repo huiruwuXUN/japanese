@@ -15,9 +15,9 @@ import csv
 import csv
 
 def set_seed(seed_value=42):
-    """设置随机数种子以确保实验结果的可重复性"""
+    '''set seed for reproducibility'''
     torch.manual_seed(seed_value)
-    torch.cuda.manual_seed_all(seed_value)  # 如果使用多个GPU
+    torch.cuda.manual_seed_all(seed_value)  # If you are using multi-GPU.
     np.random.seed(seed_value)
     random.seed(seed_value)
     torch.backends.cudnn.deterministic = True
@@ -100,17 +100,14 @@ def dataset(class_names, root_path, if_split=True):
 class SimpleCNN(nn.Module):
     def __init__(self, num_classes):
         super(SimpleCNN, self).__init__()
-        # 第一个5x5卷积层替换为两个3x3卷积层
         self.conv1 = nn.Conv2d(1, 16, kernel_size=3, stride=1, padding=1)
         self.conv2 = nn.Conv2d(16, 16, kernel_size=3, stride=1, padding=1)
 
         self.pool = nn.MaxPool2d(kernel_size=2, stride=2, padding=0)
         
-        # 第二个5x5卷积层替换为两个3x3卷积层
         self.conv3 = nn.Conv2d(16, 32, kernel_size=3, stride=1, padding=1)
         self.conv4 = nn.Conv2d(32, 32, kernel_size=3, stride=1, padding=1)
         
-        # 由于增加了一层卷积层但保持了池化层，输出特征图尺寸不变
         self.fc1 = nn.Linear(32 * 16 * 16, 120)
         self.fc2 = nn.Linear(120, 84)
         self.fc3 = nn.Linear(84, num_classes)
@@ -127,11 +124,11 @@ class SimpleCNN(nn.Module):
         return F.log_softmax(x, dim=1)
     
 def test(model, test_loader, criterion, device):
-    model.eval()  # 将模型设置为评估模式
+    model.eval()  # set model to evaluation mode
     test_loss = 0.0
     correct = 0
     total = 0
-    with torch.no_grad():  # 在评估过程中不计算梯度
+    with torch.no_grad():  # do not calculate gradients
         for inputs, labels in test_loader:
             inputs, labels = inputs.to(device), labels.to(device)
             outputs = model(inputs)
@@ -221,7 +218,6 @@ def inference(model, folder_path, save_dir, device):
 
 
 
-def main(train_model, valid, to_inference, img_dir, save_dir):
 def inference(model, folder_path, save_dir, device):
     image_names = []
     images = []
@@ -264,7 +260,6 @@ def main(train_model, valid, to_inference, img_dir, save_dir):
         torch.save(model.state_dict(), save_dir)
 
     elif valid:
-    elif valid:
         val_loader, num_classes = dataset(['kana', 'kanji'], img_dir, if_split=False)
         model = SimpleCNN(num_classes).to(device)
 
@@ -293,7 +288,6 @@ if __name__ == "__main__":
     set_seed(42)
     
     train_model = False
-<<<<<<< HEAD
     test_image_dir = '../../../../pilot data/data/B'# dir/dir/image
     
     train_image_dir = 'character_classifying_cnn\outputs\images'
@@ -302,14 +296,5 @@ if __name__ == "__main__":
     
     main(train_model, train_image_dir, output_dir)
     main(False, test_image_dir, output_dir)
-=======
-    to_inference = True
-    test_image_dir = 'character_classifying_cnn\outputs\images\Monica'
-    train_image_dir = 'character_classifying_cnn\outputs\images'
-    output_dir = 'character_classifying_cnn/outputs/models/model_4.pth'
-
-
-    main(False, False, to_inference, test_image_dir, output_dir)
->>>>>>> main
 
 
