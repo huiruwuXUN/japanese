@@ -165,7 +165,7 @@ def forgot_password():
         messagebox.showerror("Error", "Username does not exist!")
 
 
-############################### Recommendations for the Future Work #####################################
+############################### Recommendations for the Future Work for the Login Page #####################################
 '''
 1. Improved User Interface (UI) Design
 
