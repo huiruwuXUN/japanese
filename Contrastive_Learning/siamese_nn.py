@@ -188,15 +188,18 @@ def inference():
     model.eval()
 
     with torch.no_grad():
-        image1 = Image.open("E:/Data/JHA/CASIA_modified/HWDB2.0Train/004-P16_8.jpeg")
-        image2 = Image.open("E:/Data/JHA/CASIA_modified/HWDB2.0Train/004-P17_0.jpeg")
+        img_path_1 = "E:/Data/JHA/CASIA_modified/HWDB2.0Test/020-P16_9.jpeg"
+        img_path_2 = "E:/Data/JHA/CASIA_modified/HWDB2.0Test/006-P18_7.jpeg"
+        image1 = Image.open(img_path_1)
+        image2 = Image.open(img_path_2)
         transform = transforms.ToTensor()
         image1 = transform(image1).unsqueeze(0).cuda()
         image2 = transform(image2).unsqueeze(0).cuda()
         output1, output2 = model(image1, image2)
         distance = nn.functional.pairwise_distance(output1, output2)
-        print(f'Predicted Distance: {distance}')
-        if distance < 0.5:
+        print(f'Comparing image \n{img_path_1} and image \n{img_path_2}')
+        print(f'Predicted Distance: {distance.item()}')
+        if distance.item() < 0.5:
             print("Same writer")
         else:
             print("Different writer")
@@ -224,7 +227,7 @@ def test():
     
 
 if __name__ == '__main__':
-    # train()
-    inference()
+    train()
+    # inference()
     # test()
 
