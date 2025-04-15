@@ -294,10 +294,12 @@ def test():
             result = np.concatenate((result, torch.cat((distance.view(-1,1), label.view(-1,1)), dim=1).cpu().numpy()), axis=0)
     plt.scatter(result[:,0], result[:,1])
     plt.show()
-    
+
+
 
 if __name__ == '__main__':
     # train()
     inference()
-    # test()
-
+    # test
+    
+    
