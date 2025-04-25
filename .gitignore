@@ -8,3 +8,6 @@ image_dataset/
 image_processing_jyx/img
 image_processing_jyx/output
 image_processing_jyx/output_2
+image_processing_jyx/notes
+image_processing_jyx/seg_visual_img
+image_processing_jyx、segmented_chars_img
