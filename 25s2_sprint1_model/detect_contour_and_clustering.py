@@ -43,10 +43,21 @@ def cluster_folder(folder_path):
     kmeans = KMeans(n_clusters=2, random_state=42)
     labels = kmeans.fit_predict(features)
 
-    df = pd.DataFrame({'filename': filenames, 'cluster': labels})
+    df = pd.DataFrame({
+        'filename': filenames,
+        'num_contours': [f[0] for f in features],
+        'total_length': [f[1] for f in features],
+        'cluster': labels
+    })
+
+    # assign complex character to cluster=1
+    mean_lengths = df.groupby('cluster')['total_length'].mean()
+    complex_label = mean_lengths.idxmax()
+    df['cluster'] = df['cluster'].apply(lambda x: 1 if x == complex_label else 0)
+
     out_path = os.path.join(folder_path, 'contour_complexity.csv')
     df.to_csv(out_path, index=False)
-    print(f"output file:{out_path}")
+    print(f"output path:{out_path}")
 
 
 cluster_folder(folder_path)
