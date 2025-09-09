@@ -8,3 +8,6 @@ image_dataset/
 image_processing_jyx/image_data
 image_processing_jyx/modules
 image_processing_jyx/others
+*.pth
+bin_img_json/
+img_embeding_json/
